@@ -91,6 +91,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --ignore-scripts --frozen-lockfile
 
+      - name: Validate workspace versions
+        run: pnpm run check:versions
+
       - name: Show target package
         run: |
           echo "Publishing ${{ matrix.name }}"
