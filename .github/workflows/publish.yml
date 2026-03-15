@@ -1,60 +1,133 @@
-name: Publish Package
+name: Publish Packages
 
 on:
   push:
     tags:
-      - '*.*.*'
+      - "*.*.*"
 
 jobs:
-  publish:
-    name: Publish to npm
+  discover-packages:
+    name: Discover Packages
     runs-on: ubuntu-latest
-
+    outputs:
+      matrix: ${{ steps.discover.outputs.matrix }}
+      count: ${{ steps.discover.outputs.count }}
     steps:
-      # Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Setup Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.12.2'
-          cache: 'npm'
-
-      # Install dependencies
-      - name: Install dependencies
-        run: yarn install
-
-      # Validate tag and version
-      - name: Validate tag matches package.json version
-        id: validate_version
-        working-directory: packages/next
+      - name: Discover publishable packages
+        id: discover
         run: |
-          PACKAGE_VERSION=$(node -p "require('./package.json').version")
-          TAG_VERSION=$(basename ${GITHUB_REF})
-          echo "Package.json version: $PACKAGE_VERSION"
-          echo "Tag version: $TAG_VERSION"
-          if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
-            echo "Error: Tag version ($TAG_VERSION) does not match package.json version ($PACKAGE_VERSION)"
-            exit 1
+          node <<'EOF' >> "$GITHUB_OUTPUT"
+          const fs = require("fs");
+          const path = require("path");
+
+          const packagesRoot = path.join(process.cwd(), "packages");
+          const packages = [];
+
+          function walk(dir) {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              if (entry.name === "node_modules" || entry.name.startsWith(".")) {
+                continue;
+              }
+
+              const fullPath = path.join(dir, entry.name);
+
+              if (entry.isDirectory()) {
+                const packageJsonPath = path.join(fullPath, "package.json");
+
+                if (fs.existsSync(packageJsonPath)) {
+                  const pkg = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
+
+                  if (!pkg.private) {
+                    packages.push({
+                      name: pkg.name,
+                      version: pkg.version,
+                      path: path.relative(process.cwd(), fullPath),
+                    });
+                  }
+
+                  continue;
+                }
+
+                walk(fullPath);
+              }
+            }
+          }
+
+          walk(packagesRoot);
+
+          process.stdout.write(`count=${packages.length}\n`);
+          process.stdout.write(`matrix=${JSON.stringify(packages)}\n`);
+          EOF
+
+  publish:
+    name: Publish ${{ matrix.name }}
+    needs: discover-packages
+    if: ${{ needs.discover-packages.outputs.count != '0' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.discover-packages.outputs.matrix) }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.12.2
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: pnpm install --ignore-scripts --frozen-lockfile
+
+      - name: Show target package
+        run: |
+          echo "Publishing ${{ matrix.name }}"
+          echo "Version: ${{ matrix.version }}"
+          echo "Directory: ${{ matrix.path }}"
+
+      - name: Check whether version already exists
+        id: version_check
+        run: |
+          if npm view "${{ matrix.name }}@${{ matrix.version }}" version >/dev/null 2>&1; then
+            echo "should_publish=false" >> "$GITHUB_OUTPUT"
+            echo "Version already published, skipping"
+          else
+            echo "should_publish=true" >> "$GITHUB_OUTPUT"
+            echo "Version not found on npm, continuing"
           fi
 
-      # Build Packages
       - name: Build package
-        working-directory: packages/next
-        run: yarn build
+        if: ${{ steps.version_check.outputs.should_publish == 'true' }}
+        working-directory: ${{ matrix.path }}
+        run: |
+          if node -e "const pkg=require('./package.json'); process.exit(pkg.scripts && pkg.scripts.build ? 0 : 1)"; then
+            pnpm run build
+          else
+            echo "No build script found, skipping build"
+          fi
 
-      # Whoami to verify authentication
-      - name: Whoami
-        working-directory: packages/next
+      - name: Verify npm authentication
+        if: ${{ steps.version_check.outputs.should_publish == 'true' }}
+        working-directory: ${{ matrix.path }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm whoami
 
-      # Publish to npm
-      - name: Publish to npm
-        working-directory: packages/next
+      - name: Publish package
+        if: ${{ steps.version_check.outputs.should_publish == 'true' }}
+        working-directory: ${{ matrix.path }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public --tag latest

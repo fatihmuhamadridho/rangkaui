@@ -1,5 +1,5 @@
 {
-  "include": ["scripts", "packages/*/src", "apps/*"],
+  "include": ["scripts", "packages", "apps"],
   "exclude": ["node_modules", "packages/*/{lib,esm,cjs}/**/*"],
   "compilerOptions": {
     "types": ["node"],
@@ -11,6 +11,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "noEmit": true,
     "noEmitOnError": true,
     "allowJs": true,
     "strict": true,

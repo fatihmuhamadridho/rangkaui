@@ -1,49 +1,23 @@
 {
-  "name": "rangkaui-root",
-  "version": "0.0.1",
-  "main": "index.ts",
+  "name": "@rangkaui/monorepo",
+  "version": "0.0.2",
   "license": "MIT",
-  "packageManager": "yarn@4.5.1",
-  "engines": {
-    "node": ">=18.20.3"
-  },
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
   "scripts": {
-    "dev": "yarn workspace rangkaui-docs dev",
-    "clean": "rimraf --glob packages/*/{esm,cjs,lib,dist} packages/*/*.tsbuildinfo || true",
-    "build": "yarn workspace rangkaui-next build",
-    "build-vercel": "tsx ./scripts/build-vercel.ts"
-  },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "format": "prettier --write .",
+    "lint": "eslint . --max-warnings=0",
+    "dev": "pnpm --filter rangkaui.vercel.app dev"
   },
   "devDependencies": {
-    "@eslint/js": "^9.14.0",
-    "@types/fs-extra": "^11.0.4",
-    "@types/node": "^22.9.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@types/rimraf": "^4.0.5",
-    "css-loader": "^7.1.2",
-    "eslint": "^9.14.0",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "execa": "^9.5.1",
-    "fs-extra": "^11.2.0",
-    "globals": "^15.12.0",
-    "postcss": "^8.4.49",
-    "postcss-loader": "^8.1.1",
-    "postcss-modules": "^6.0.1",
-    "prettier": "3.3.3",
-    "react-dom": "^18.3.1",
-    "rimraf": "^6.0.1",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.19.2",
-    "typescript": "5.1.6",
-    "typescript-eslint": "^8.13.0"
+    "@types/node": "^20",
+    "@eslint/js": "9.39.4",
+    "eslint": "9.39.4",
+    "globals": "16.4.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "prettier": "3.8.1",
+    "rollup": "^3.0.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.57.0"
   }
 }

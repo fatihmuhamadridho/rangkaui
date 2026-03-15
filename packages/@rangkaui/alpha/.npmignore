@@ -1,0 +1,9 @@
+src/
+node_modules/
+*.log
+*.ts
+rollup.config.mjs
+tsconfig.json
+tsconfig.build.json
+.eslintrc
+.prettierrc
