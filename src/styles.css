@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* Bootstrap-inspired design tokens from the supplied palette reference. */
+@theme {
+  --color-primary: #0d6efd;
+  --color-secondary: #6c757d;
+  --color-success: #198754;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #0dcaf0;
+  --color-light: #f8f9fa;
+  --color-dark: #212529;
+
+  --color-body: #212529;
+  --color-muted: #6c757d;
+  --color-border: #dee2e6;
+  --color-surface: #ffffff;
+
+  --color-gray-50: #f8f9fa;
+  --color-gray-100: #e9ecef;
+  --color-gray-200: #dee2e6;
+  --color-gray-300: #ced4da;
+  --color-gray-400: #adb5bd;
+  --color-gray-500: #6c757d;
+  --color-gray-600: #495057;
+  --color-gray-700: #343a40;
+  --color-gray-800: #212529;
+  --color-gray-900: #1a1d20;
+
+  --color-blue-100: #cfe2ff;
+  --color-blue-200: #9ec5fe;
+  --color-blue-300: #6ea8fe;
+  --color-blue-400: #3d8bfd;
+  --color-blue-500: #0d6efd;
+  --color-blue-600: #0a58ca;
+  --color-blue-700: #084298;
+  --color-blue-800: #052c65;
+  --color-blue-900: #031633;
+
+  --color-indigo-500: #6610f2;
+  --color-purple-500: #6f42c1;
+  --color-pink-500: #d63384;
+  --color-red-500: #dc3545;
+  --color-orange-500: #fd7e14;
+  --color-yellow-500: #ffc107;
+  --color-green-500: #198754;
+  --color-teal-500: #20c997;
+  --color-cyan-500: #0dcaf0;
+}
+
+:root {
+  --bs-body-color: var(--color-body);
+  --bs-body-bg: var(--color-surface);
+  --bs-border-color: var(--color-border);
+  --bs-primary: var(--color-primary);
+  --bs-secondary: var(--color-secondary);
+  --bs-success: var(--color-success);
+  --bs-danger: var(--color-danger);
+  --bs-warning: var(--color-warning);
+  --bs-info: var(--color-info);
+  --bs-light: var(--color-light);
+  --bs-dark: var(--color-dark);
+}
+
+@layer base {
+  :root {
+    color: var(--color-body);
+    background: var(--color-surface);
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-border);
+  }
+}

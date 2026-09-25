@@ -1,0 +1,10 @@
+.box {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.padded { padding: 1rem; }
+.bordered { border: 1px solid var(--color-border); }
+.rounded { border-radius: 0.375rem; }
+.shadow { box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 10%); }
