@@ -18,8 +18,8 @@
     "./style.css": "./dist/index.css"
   },
   "scripts": {
-    "build": "vite build",
-    "postbuild": "tsup --dts-only",
+    "prepare": "vite build",
+    "postprepare": "tsup --dts-only",
     "pack:local": "pnpm pack --pack-destination .",
     "dev": "vite build --watch",
     "storybook": "storybook dev -p 6006",
