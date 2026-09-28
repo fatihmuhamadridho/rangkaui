@@ -23,9 +23,7 @@
     "pack:local": "pnpm pack --pack-destination .",
     "dev": "vite build --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "preparebuild": "vite build && tsup --dts-only",
-    "prepare": "npm run preparebuild"
+    "build-storybook": "storybook build"
   },
   "keywords": [],
   "author": "",
