@@ -18,12 +18,13 @@
     "./style.css": "./dist/index.css"
   },
   "scripts": {
-    "prepare": "vite build",
-    "postprepare": "tsup --dts-only",
+    "build": "vite build",
+    "postbuild": "tsup --dts-only",
     "pack:local": "pnpm pack --pack-destination .",
     "dev": "vite build --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "tsup"
   },
   "keywords": [],
   "author": "",
