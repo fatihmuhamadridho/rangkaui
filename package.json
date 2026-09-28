@@ -1,6 +1,6 @@
 {
   "name": "rangkaui",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -24,7 +24,7 @@
     "dev": "vite build --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepare": "tsup"
+    "prepare": "npm run build"
   },
   "keywords": [],
   "author": "",
