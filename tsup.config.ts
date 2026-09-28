@@ -3,9 +3,9 @@ import { defineConfig } from "tsup";
 export default defineConfig({
   entry: ["src/index.ts"],
   format: ["esm", "cjs"],
-  dts: true,
+  dts: { resolve: false },
   sourcemap: true,
-  clean: true,
+  clean: false,
   treeshake: true,
   external: ["react", "react-dom", "react/jsx-runtime"],
   outExtension({ format }) {

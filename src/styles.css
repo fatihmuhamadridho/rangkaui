@@ -1,7 +1,5 @@
-@import "tailwindcss";
-
 /* Bootstrap-inspired design tokens from the supplied palette reference. */
-@theme {
+:root {
   --color-primary: #0d6efd;
   --color-secondary: #6c757d;
   --color-success: #198754;
@@ -62,16 +60,15 @@
   --bs-dark: var(--color-dark);
 }
 
-@layer base {
-  :root {
-    color: var(--color-body);
-    background: var(--color-surface);
-    font-family: ui-sans-serif, system-ui, sans-serif;
-  }
+html,
+body {
+  color: var(--color-body);
+  background: var(--color-surface);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
 
-  *,
-  ::before,
-  ::after {
-    border-color: var(--color-border);
-  }
+*,
+::before,
+::after {
+  border-color: var(--color-border);
 }

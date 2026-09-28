@@ -2,10 +2,26 @@
   "name": "rangkaui",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/index.css",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./style.css": "./dist/index.css"
+  },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "vite build",
+    "postbuild": "tsup --dts-only",
+    "pack:local": "pnpm pack --pack-destination .",
+    "dev": "vite build --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -25,7 +41,7 @@
     "@storybook/addon-vitest": "^10.6.0",
     "@storybook/react-vite": "^10.6.0",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.6.2",
+    "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.1",
@@ -36,8 +52,8 @@
     "storybook": "^10.6.0",
     "tailwindcss": "^4.3.3",
     "tsup": "^8.5.1",
-    "typescript": "^7.0.2",
-    "vite": "^8.3.0",
+    "typescript": "5.7.3",
+    "vite": "^8.3.1",
     "vitest": "latest"
   },
   "peerDependencies": {
