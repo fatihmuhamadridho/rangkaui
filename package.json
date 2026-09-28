@@ -24,7 +24,8 @@
     "dev": "vite build --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepare": "npm run build"
+    "preparebuild": "vite build && tsup --dts-only",
+    "prepare": "npm run preparebuild"
   },
   "keywords": [],
   "author": "",
