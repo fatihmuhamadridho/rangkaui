@@ -1,0 +1,39 @@
+.divider {
+  --divider-color: #c6c9cc;
+  box-sizing: border-box;
+  color: #212529;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.horizontal {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.rule {
+  min-width: 0;
+  flex: 1 1 auto;
+  border-top: 1px solid var(--divider-color);
+}
+
+.label { flex: 0 0 auto; }
+.withoutLabel .rule { width: 100%; }
+.left .rule:first-child, .right .rule:last-child { flex: 0 1 2.5rem; }
+
+.dashed .rule { border-top-style: dashed; }
+
+.vertical {
+  display: inline-block;
+  width: 0;
+  height: 2rem;
+  margin: 0 1rem;
+  border-left: 1px solid var(--divider-color);
+  vertical-align: middle;
+}
+
+.vertical.dashed { border-left-style: dashed; }

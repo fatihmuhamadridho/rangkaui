@@ -1,0 +1,49 @@
+.track {
+  display: flex;
+  height: 1rem;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  background: #e9ecef;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem;
+}
+
+.bar {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  font-size: inherit;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  transition: width 0.6s ease;
+}
+
+.primary { background: #0d6efd; }
+.secondary { background: #6c757d; }
+.success { background: #198754; }
+.danger { background: #dc3545; }
+.warning { background: #ffc107; color: #212529; }
+.info { background: #0dcaf0; color: #212529; }
+
+.striped {
+  background-image: linear-gradient(45deg, rgb(255 255 255 / 15%) 25%, transparent 25%, transparent 50%, rgb(255 255 255 / 15%) 50%, rgb(255 255 255 / 15%) 75%, transparent 75%, transparent);
+  background-size: 1rem 1rem;
+}
+.animated { animation: progress-stripes 1s linear infinite; }
+.stacked { border-radius: 0.375rem; }
+.stacked > .bar + .bar { border-left: 1px solid rgb(255 255 255 / 75%); }
+
+@keyframes progress-stripes {
+  from { background-position-x: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar { transition: none; }
+  .animated { animation: none; }
+}

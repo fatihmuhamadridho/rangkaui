@@ -1,0 +1,19 @@
+.collapse { min-width: 0; }
+.trigger { cursor: pointer; }
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 350ms ease;
+}
+.open { grid-template-rows: 1fr; }
+.panelInner { min-height: 0; overflow: hidden; }
+.content { min-width: 0; }
+
+.horizontal .panel { display: inline-grid; grid-template-columns: 0fr; grid-template-rows: 1fr; vertical-align: top; }
+.horizontal .open { grid-template-columns: 1fr; }
+.horizontal .panelInner { min-width: 0; min-height: auto; }
+.horizontal .content { width: max-content; max-width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .panel { transition: none; }
+}

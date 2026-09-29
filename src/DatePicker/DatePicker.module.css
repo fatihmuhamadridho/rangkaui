@@ -1,0 +1,51 @@
+.root { position: relative; display: inline-block; width: 10rem; color: #212529; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; }
+.primary { --date-accent: #0d6efd; --date-border: #86b7fe; }
+.success { --date-accent: #198754; --date-border: #75b798; }
+.danger { --date-accent: #dc3545; --date-border: #ea868f; }
+.default { --date-accent: #0d6efd; --date-border: #ced4da; }
+
+.input { display: flex; height: 2.25rem; align-items: center; gap: 0.25rem; padding: 0 0.5rem; border: 1px solid var(--date-border); border-radius: 0.375rem; background: #fff; }
+.input:focus-within { border-color: var(--date-border); box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--date-accent) 25%, transparent); }
+.input input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: inherit; font: inherit; }
+.input input::placeholder { color: #6c757d; opacity: 1; }
+.calendarToggle { display: inline-flex; width: 1.25rem; height: 1.25rem; flex: 0 0 auto; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: #6c757d; cursor: pointer; }
+.calendarToggle svg { width: 0.875rem; height: 0.875rem; }
+.disabled { background: #e9ecef; opacity: 0.7; }
+.disabled input, .calendarToggle:disabled { cursor: not-allowed; }
+
+.popup { position: absolute; z-index: 1050; top: calc(100% + 0.375rem); left: 0; min-width: 18rem; overflow: hidden; border-radius: 0.5rem; background: #fff; box-shadow: 0 0.75rem 1.5rem rgb(0 0 0 / 18%); }
+.toolbar { display: flex; min-height: 3.25rem; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.5rem; border-bottom: 1px solid #dee2e6; }
+.selectLike { min-height: 2.5rem; padding: 0.375rem 0.75rem; border: 1px solid #ced4da; border-radius: 0.375rem; background: #fff; color: inherit; font: inherit; font-size: 1rem; cursor: pointer; }
+.viewButtons { display: inline-flex; overflow: hidden; border: 1px solid var(--date-accent); border-radius: 0.375rem; }
+.viewButtons button { padding: 0.375rem 0.75rem; border: 0; background: #fff; color: var(--date-accent); font: inherit; cursor: pointer; }
+.viewButtons .viewActive { background: var(--date-accent); color: #fff; }
+.calendars { display: grid; grid-template-columns: minmax(0, 1fr); }
+.twoMonths { grid-template-columns: repeat(2, minmax(17rem, 1fr)); }
+.monthCalendar + .monthCalendar { border-left: 1px solid #dee2e6; }
+.calendarHeading { display: flex; height: 2.5rem; align-items: center; justify-content: space-between; padding: 0 0.5rem; }
+.calendarHeading strong { font-weight: 500; }
+.calendarHeading button { width: 1.75rem; height: 1.75rem; border: 0; background: transparent; color: #6c757d; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.weekdays, .days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); padding: 0 0.5rem; }
+.weekdays { align-items: center; min-height: 2rem; color: #495057; text-align: center; }
+.days { padding-bottom: 0.5rem; }
+.day { aspect-ratio: 1; margin: 0.0625rem; border: 1px solid transparent; border-radius: 0.2rem; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.day:hover:not(:disabled), .selectionGrid button:hover { background: #e9f2ff; }
+.outside { color: #adb5bd; }
+.today { border-color: var(--date-accent); }
+.selected { background: var(--date-accent) !important; color: #fff !important; }
+.inRange { border-radius: 0; background: color-mix(in srgb, var(--date-accent) 12%, white); }
+.day:disabled { color: #ced4da; cursor: not-allowed; }
+.day:focus-visible, .selectionGrid button:focus-visible { outline: 2px solid var(--date-accent); outline-offset: 1px; }
+.selectionGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; padding: 1rem; }
+.selectionGrid button { min-height: 3rem; border: 0; border-radius: 0.25rem; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.footer { display: flex; min-height: 2.75rem; align-items: center; justify-content: center; padding: 0.25rem 0.75rem; border-top: 1px solid #dee2e6; }
+.footer button { padding: 0.25rem 0.5rem; border: 0; background: transparent; color: var(--date-accent); font: inherit; cursor: pointer; }
+.footer .confirm { margin-left: auto; padding: 0.375rem 0.75rem; border-radius: 0.375rem; background: var(--date-accent); color: #fff; }
+.timeRow { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; border-top: 1px solid #dee2e6; }
+.timeRow input { border: 1px solid #ced4da; border-radius: 0.25rem; padding: 0.25rem; font: inherit; }
+
+@media (max-width: 640px) {
+  .twoMonths { grid-template-columns: 1fr; }
+  .monthCalendar + .monthCalendar { border-top: 1px solid #dee2e6; border-left: 0; }
+  .popup { max-width: calc(100vw - 1rem); }
+}

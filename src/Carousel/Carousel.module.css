@@ -1,0 +1,100 @@
+.carousel {
+  --carousel-control-color: #fff;
+  --carousel-caption-color: #fff;
+  --carousel-indicator-color: #fff;
+
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.viewport { overflow: hidden; }
+.track {
+  display: flex;
+  transition: transform var(--carousel-duration, 600ms) ease-in-out;
+}
+.slide {
+  position: relative;
+  display: flex;
+  min-width: 100%;
+  min-height: 12rem;
+  flex: 0 0 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #777;
+  color: #fff;
+  text-align: center;
+}
+.content { display: flex; width: 100%; min-height: 12rem; align-items: center; justify-content: center; }
+.content :where(img, video) { display: block; width: 100%; height: 100%; min-height: 12rem; object-fit: cover; }
+.caption {
+  position: absolute;
+  right: 15%;
+  bottom: 3rem;
+  left: 15%;
+  z-index: 1;
+  color: var(--carousel-caption-color);
+  text-align: center;
+}
+
+.control {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  width: 15%;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--carousel-control-color);
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 150ms ease-in-out;
+}
+.control:hover:not(:disabled) { opacity: 1; }
+.control:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; opacity: 1; }
+.control:disabled { cursor: default; }
+.previous { left: 0; }
+.next { right: 0; }
+.arrow { width: 1.5rem; height: 1.5rem; }
+
+.indicators {
+  position: absolute;
+  z-index: 2;
+  right: 15%;
+  bottom: 0.75rem;
+  left: 15%;
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+.indicator {
+  box-sizing: content-box;
+  width: 2rem;
+  height: 0.1875rem;
+  padding: 0;
+  border: 0;
+  background: var(--carousel-indicator-color);
+  cursor: pointer;
+  opacity: 0.5;
+}
+.indicatorActive { opacity: 1; }
+.indicator:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+.dark {
+  --carousel-control-color: #6c757d;
+  --carousel-caption-color: #6c757d;
+  --carousel-indicator-color: #6c757d;
+  background: #f8f9fa;
+  color: #212529;
+}
+.dark .slide { background: #f8f9fa; color: #212529; }
+
+@media (prefers-reduced-motion: reduce) {
+  .track, .control { transition: none; }
+}

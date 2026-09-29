@@ -1,0 +1,46 @@
+.skeleton {
+  display: inline-block;
+  min-height: 1em;
+  vertical-align: middle;
+  cursor: wait;
+  background-color: var(--skeleton-color, currentColor);
+  opacity: 0.2;
+}
+
+.default { --skeleton-color: currentColor; }
+.primary { --skeleton-color: #0d6efd; }
+.secondary { --skeleton-color: #6c757d; }
+.success { --skeleton-color: #198754; }
+.danger { --skeleton-color: #dc3545; }
+.warning { --skeleton-color: #ffc107; }
+.info { --skeleton-color: #0dcaf0; }
+.light { --skeleton-color: #f8f9fa; }
+.dark { --skeleton-color: #212529; }
+
+.sizexs { min-height: 0.75em; }
+.sizesm { min-height: 0.875em; }
+.sizemd { min-height: 1em; }
+.sizelg { min-height: 1.25em; }
+
+.glow { animation: skeleton-glow 2s ease-in-out infinite; }
+.wave { position: relative; overflow: hidden; opacity: 1; }
+.wave::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 45%), transparent);
+  animation: skeleton-wave 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-glow {
+  50% { opacity: 0.1; }
+}
+
+@keyframes skeleton-wave {
+  100% { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow, .wave::after { animation: none; }
+}

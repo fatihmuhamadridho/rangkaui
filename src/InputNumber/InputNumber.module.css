@@ -1,0 +1,18 @@
+.wrapper { --number-border: #dee2e6; --number-focus: #86b7fe; display: flex; min-width: 0; align-items: stretch; border: 1px solid var(--number-border); border-radius: 0.375rem; background: #fff; color: #212529; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 1rem; }
+.wrapper:focus-within { border-color: var(--number-focus); outline: 0; box-shadow: 0 0 0 0.2rem rgb(13 110 253 / 25%); }
+.input { box-sizing: border-box; display: block; width: 100%; min-width: 0; height: 2.375rem; flex: 1 1 auto; padding: 0.375rem 0.75rem; border: 0; border-radius: inherit; outline: 0; background: transparent; color: inherit; font: inherit; }
+.input:focus { box-shadow: none; }
+.input:disabled { cursor: not-allowed; }
+.addon { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; padding: 0.375rem 0.75rem; border-right: 1px solid var(--number-border); background: #e9ecef; color: #495057; white-space: nowrap; }
+.addon:last-child { border-right: 0; border-left: 1px solid var(--number-border); }
+.clear { display: inline-flex; width: 2rem; flex: 0 0 auto; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: #6c757d; cursor: pointer; }
+.clear svg { width: 0.875rem; height: 0.875rem; }
+.clear:hover { color: #343a40; }
+.small { font-size: 0.875rem; }
+.small .input { height: 1.875rem; padding: 0.25rem 0.5rem; }
+.large { font-size: 1.25rem; }
+.large .input { height: 3rem; padding: 0.5rem 1rem; }
+.disabled { background: #e9ecef; opacity: 0.8; }
+.disabled .addon { background: #dee2e6; }
+.wrapper > :first-child { border-radius: 0.3rem 0 0 0.3rem; }
+.wrapper > :last-child { border-radius: 0 0.3rem 0.3rem 0; }
