@@ -13,8 +13,13 @@
   font-size: 1rem;
 }
 
-.item + .item { border-top: 1px solid var(--accordion-border); }
-.heading { margin: 0; font: inherit; }
+.item + .item {
+  border-top: 1px solid var(--accordion-border);
+}
+.heading {
+  margin: 0;
+  font: inherit;
+}
 
 .trigger {
   display: flex;
@@ -30,13 +35,28 @@
   font: inherit;
   text-align: left;
   cursor: pointer;
-  transition: color 150ms ease-in-out, background-color 150ms ease-in-out;
+  transition:
+    color 150ms ease-in-out,
+    background-color 150ms ease-in-out;
 }
 
-.trigger:hover:not(:disabled) { background: #f8f9fa; }
-.trigger.expanded { background: var(--accordion-active-background); color: var(--accordion-active-color); }
-.trigger:disabled { cursor: not-allowed; opacity: 0.55; }
-.trigger:focus-visible { position: relative; z-index: 1; outline: 2px solid #86b7fe; outline-offset: -2px; }
+.trigger:hover:not(:disabled) {
+  background: #f8f9fa;
+}
+.trigger.expanded {
+  background: var(--accordion-active-background);
+  color: var(--accordion-active-color);
+}
+.trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.trigger:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 2px solid #86b7fe;
+  outline-offset: -2px;
+}
 
 .chevron {
   width: 0.55rem;
@@ -47,7 +67,9 @@
   transform: rotate(45deg) translateY(-0.15rem);
   transition: transform 150ms ease-in-out;
 }
-.expanded .chevron { transform: rotate(225deg) translate(-0.1rem, -0.1rem); }
+.expanded .chevron {
+  transform: rotate(225deg) translate(-0.1rem, -0.1rem);
+}
 
 .panel {
   display: grid;
@@ -55,19 +77,37 @@
   background: var(--accordion-background);
   transition: grid-template-rows 200ms ease-in-out;
 }
-.panelExpanded { grid-template-rows: 1fr; }
-.panelInner { overflow: hidden; }
-.body { padding: 1rem 1.25rem; }
+.panelExpanded {
+  grid-template-rows: 1fr;
+}
+.panelInner {
+  overflow: hidden;
+}
+.body {
+  padding: 1rem 1.25rem;
+}
 
 .flush {
   overflow: visible;
   border: 0;
   border-radius: 0;
 }
-.flush .item + .item { border-top: 1px solid var(--accordion-border); }
-.flush .trigger { padding-right: 0; padding-left: 0; }
-.flush .body { padding-right: 1.25rem; padding-left: 1.25rem; }
+.flush .item + .item {
+  border-top: 1px solid var(--accordion-border);
+}
+.flush .trigger {
+  padding-right: 0;
+  padding-left: 0;
+}
+.flush .body {
+  padding-right: 1.25rem;
+  padding-left: 1.25rem;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .trigger, .chevron, .panel { transition: none; }
+  .trigger,
+  .chevron,
+  .panel {
+    transition: none;
+  }
 }

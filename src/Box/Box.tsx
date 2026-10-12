@@ -1,6 +1,6 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from 'react';
 
-import styles from "./Box.module.css";
+import styles from './Box.module.css';
 
 export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
@@ -12,7 +12,7 @@ export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
 
 export function Box({
   children,
-  className = "",
+  className = '',
   padded = false,
   bordered = false,
   rounded = false,
@@ -28,7 +28,7 @@ export function Box({
     className,
   ]
     .filter(Boolean)
-    .join(" ");
+    .join(' ');
 
   return (
     <div className={classes} {...props}>

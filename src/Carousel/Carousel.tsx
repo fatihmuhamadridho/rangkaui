@@ -1,6 +1,6 @@
-import { useEffect, useState, type CSSProperties, type HTMLAttributes, type ReactNode } from "react";
+import { useEffect, useState, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react';
 
-import styles from "./Carousel.module.css";
+import styles from './Carousel.module.css';
 
 export interface CarouselSlide {
   id?: string;
@@ -9,7 +9,7 @@ export interface CarouselSlide {
   label?: string;
 }
 
-export interface CarouselProps extends Omit<HTMLAttributes<HTMLDivElement>, "defaultValue"> {
+export interface CarouselProps extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
   slides: CarouselSlide[];
   activeIndex?: number;
   defaultActiveIndex?: number;
@@ -23,11 +23,11 @@ export interface CarouselProps extends Omit<HTMLAttributes<HTMLDivElement>, "def
   transitionDuration?: number;
 }
 
-function Arrow({ direction }: { direction: "previous" | "next" }) {
+function Arrow({ direction }: { direction: 'previous' | 'next' }) {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16" className={styles.arrow}>
       <path
-        d={direction === "previous" ? "m10 2-6 6 6 6" : "m6 2 6 6-6 6"}
+        d={direction === 'previous' ? 'm10 2-6 6 6 6' : 'm6 2 6 6-6 6'}
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
@@ -50,9 +50,9 @@ export function Carousel({
   wrap = true,
   dark = false,
   transitionDuration = 600,
-  className = "",
+  className = '',
   style,
-  "aria-label": ariaLabel = "Carousel",
+  'aria-label': ariaLabel = 'Carousel',
   onMouseEnter,
   onMouseLeave,
   ...props
@@ -81,12 +81,12 @@ export function Carousel({
 
   const carouselStyle = {
     ...style,
-    "--carousel-duration": `${Math.max(0, transitionDuration)}ms`,
+    '--carousel-duration': `${Math.max(0, transitionDuration)}ms`,
   } as CSSProperties;
 
   return (
     <div
-      className={[styles.carousel, dark && styles.dark, className].filter(Boolean).join(" ")}
+      className={[styles.carousel, dark && styles.dark, className].filter(Boolean).join(' ')}
       role="region"
       aria-roledescription="carousel"
       aria-label={ariaLabel}
@@ -127,7 +127,7 @@ export function Carousel({
         <>
           <button
             type="button"
-            className={[styles.control, styles.previous].join(" ")}
+            className={[styles.control, styles.previous].join(' ')}
             aria-label="Previous slide"
             disabled={!wrap && currentIndex === 0}
             onClick={() => goTo(currentIndex - 1)}
@@ -136,7 +136,7 @@ export function Carousel({
           </button>
           <button
             type="button"
-            className={[styles.control, styles.next].join(" ")}
+            className={[styles.control, styles.next].join(' ')}
             aria-label="Next slide"
             disabled={!wrap && currentIndex === slides.length - 1}
             onClick={() => goTo(currentIndex + 1)}
@@ -152,9 +152,9 @@ export function Carousel({
             <button
               key={slide.id ?? index}
               type="button"
-              className={[styles.indicator, index === currentIndex && styles.indicatorActive].filter(Boolean).join(" ")}
+              className={[styles.indicator, index === currentIndex && styles.indicatorActive].filter(Boolean).join(' ')}
               aria-label={`Go to slide ${index + 1}`}
-              aria-current={index === currentIndex ? "true" : undefined}
+              aria-current={index === currentIndex ? 'true' : undefined}
               onClick={() => goTo(index)}
             />
           ))}

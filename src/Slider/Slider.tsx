@@ -1,8 +1,11 @@
-import { useState, type InputHTMLAttributes } from "react";
+import { useState, type InputHTMLAttributes } from 'react';
 
-import styles from "./Slider.module.css";
+import styles from './Slider.module.css';
 
-export interface SliderProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "value" | "defaultValue" | "onChange"> {
+export interface SliderProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'value' | 'defaultValue' | 'onChange'
+> {
   value?: number;
   defaultValue?: number;
   onValueChange?: (value: number) => void;
@@ -17,7 +20,7 @@ export function Slider({
   showValue = false,
   label,
   disabled = false,
-  className = "",
+  className = '',
   ...props
 }: SliderProps) {
   const controlled = value !== undefined;
@@ -26,7 +29,11 @@ export function Slider({
 
   return (
     <div className={styles.root}>
-      {label && <label className={styles.label} htmlFor={props.id}>{label}</label>}
+      {label && (
+        <label className={styles.label} htmlFor={props.id}>
+          {label}
+        </label>
+      )}
       <input
         {...props}
         type="range"

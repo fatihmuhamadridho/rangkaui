@@ -1,10 +1,10 @@
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes } from 'react';
 
-import styles from "./Spinner.module.css";
+import styles from './Spinner.module.css';
 
-export type SpinnerVariant = "border" | "grow";
-export type SpinnerColor = "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
-export type SpinnerSize = "sm" | "md";
+export type SpinnerVariant = 'border' | 'grow';
+export type SpinnerColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+export type SpinnerSize = 'sm' | 'md';
 
 export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: SpinnerVariant;
@@ -14,21 +14,27 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 function joinClasses(...classes: Array<string | false | undefined>) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 export function Spinner({
-  variant = "border",
+  variant = 'border',
   color,
   size,
-  label = "Loading...",
-  className = "",
+  label = 'Loading...',
+  className = '',
   ...props
 }: SpinnerProps) {
   return (
     <span
       {...props}
-      className={joinClasses(styles.spinner, styles[variant], color && styles[color], size === "sm" && styles.small, className)}
+      className={joinClasses(
+        styles.spinner,
+        styles[variant],
+        color && styles[color],
+        size === 'sm' && styles.small,
+        className
+      )}
       role="status"
       aria-label={label}
     >

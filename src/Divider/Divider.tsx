@@ -1,10 +1,10 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from 'react';
 
-import styles from "./Divider.module.css";
+import styles from './Divider.module.css';
 
-export type DividerOrientation = "horizontal" | "vertical";
-export type DividerStyle = "solid" | "dashed";
-export type DividerAlign = "left" | "center" | "right";
+export type DividerOrientation = 'horizontal' | 'vertical';
+export type DividerStyle = 'solid' | 'dashed';
+export type DividerAlign = 'left' | 'center' | 'right';
 
 export interface DividerProps extends HTMLAttributes<HTMLDivElement> {
   orientation?: DividerOrientation;
@@ -14,17 +14,17 @@ export interface DividerProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export function Divider({
-  orientation = "horizontal",
-  variant = "solid",
-  align = "center",
+  orientation = 'horizontal',
+  variant = 'solid',
+  align = 'center',
   children,
-  className = "",
+  className = '',
   ...props
 }: DividerProps) {
-  if (orientation === "vertical") {
+  if (orientation === 'vertical') {
     return (
       <div
-        className={[styles.divider, styles.vertical, styles[variant], className].filter(Boolean).join(" ")}
+        className={[styles.divider, styles.vertical, styles[variant], className].filter(Boolean).join(' ')}
         role="separator"
         aria-orientation="vertical"
         {...props}
@@ -41,7 +41,9 @@ export function Divider({
         children ? styles.withLabel : styles.withoutLabel,
         styles[align],
         className,
-      ].filter(Boolean).join(" ")}
+      ]
+        .filter(Boolean)
+        .join(' ')}
       role="separator"
       aria-orientation="horizontal"
       {...props}

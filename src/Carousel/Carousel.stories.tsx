@@ -1,24 +1,51 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Carousel } from "./Carousel";
+import { Carousel } from './Carousel';
 
 const slides = [
-  { id: "slide-1", content: <strong style={{ fontSize: "1.5rem", fontWeight: 400 }}>First slide</strong>, caption: <><strong>First slide label</strong><div>Some representative placeholder content for the first slide.</div></> },
-  { id: "slide-2", content: <strong style={{ fontSize: "1.5rem", fontWeight: 400 }}>Second slide</strong>, caption: <><strong>Second slide label</strong><div>Some representative placeholder content for the second slide.</div></> },
-  { id: "slide-3", content: <strong style={{ fontSize: "1.5rem", fontWeight: 400 }}>Third slide</strong>, caption: <><strong>Third slide label</strong><div>Some representative placeholder content for the third slide.</div></> },
+  {
+    id: 'slide-1',
+    content: <strong style={{ fontSize: '1.5rem', fontWeight: 400 }}>First slide</strong>,
+    caption: (
+      <>
+        <strong>First slide label</strong>
+        <div>Some representative placeholder content for the first slide.</div>
+      </>
+    ),
+  },
+  {
+    id: 'slide-2',
+    content: <strong style={{ fontSize: '1.5rem', fontWeight: 400 }}>Second slide</strong>,
+    caption: (
+      <>
+        <strong>Second slide label</strong>
+        <div>Some representative placeholder content for the second slide.</div>
+      </>
+    ),
+  },
+  {
+    id: 'slide-3',
+    content: <strong style={{ fontSize: '1.5rem', fontWeight: 400 }}>Third slide</strong>,
+    caption: (
+      <>
+        <strong>Third slide label</strong>
+        <div>Some representative placeholder content for the third slide.</div>
+      </>
+    ),
+  },
 ];
 
 const meta = {
-  title: "Components/Carousel",
+  title: 'Components/Carousel',
   component: Carousel,
-  parameters: { layout: "padded" },
+  parameters: { layout: 'padded' },
   args: { slides },
   argTypes: {
-    showControls: { control: "boolean" },
-    showIndicators: { control: "boolean" },
-    interval: { control: "number" },
-    wrap: { control: "boolean" },
-    dark: { control: "boolean" },
+    showControls: { control: 'boolean' },
+    showIndicators: { control: 'boolean' },
+    interval: { control: 'number' },
+    wrap: { control: 'boolean' },
+    dark: { control: 'boolean' },
   },
 } satisfies Meta<typeof Carousel>;
 

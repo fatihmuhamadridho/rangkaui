@@ -1,9 +1,19 @@
-import { createContext, useContext, useEffect, useId, useRef, useState, type ButtonHTMLAttributes, type HTMLAttributes, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type ButtonHTMLAttributes,
+  type HTMLAttributes,
+  type ReactNode,
+} from 'react';
 
-import styles from "./Popover.module.css";
+import styles from './Popover.module.css';
 
-export type PopoverPlacement = "top" | "right" | "bottom" | "left";
-export type PopoverTriggerMode = "click" | "hover" | "focus" | "manual";
+export type PopoverPlacement = 'top' | 'right' | 'bottom' | 'left';
+export type PopoverTriggerMode = 'click' | 'hover' | 'focus' | 'manual';
 
 interface PopoverContextValue {
   open: boolean;
@@ -31,18 +41,18 @@ export interface PopoverTriggerProps extends ButtonHTMLAttributes<HTMLButtonElem
   children?: ReactNode;
 }
 
-export interface PopoverContentProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
+export interface PopoverContentProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   title?: ReactNode;
   children?: ReactNode;
 }
 
 function joinClasses(...classes: Array<string | false | undefined>) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 function usePopoverContext() {
   const context = useContext(PopoverContext);
-  if (!context) throw new Error("PopoverTrigger and PopoverContent must be rendered inside Popover.");
+  if (!context) throw new Error('PopoverTrigger and PopoverContent must be rendered inside Popover.');
   return context;
 }
 
@@ -50,14 +60,14 @@ export function Popover({
   open,
   defaultOpen = false,
   onOpenChange,
-  placement = "top",
-  trigger = "click",
+  placement = 'top',
+  trigger = 'click',
   children,
-  className = "",
+  className = '',
   onKeyDown,
   ...props
 }: PopoverProps) {
-  const generatedId = useId().replace(/:/g, "");
+  const generatedId = useId().replace(/:/g, '');
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -76,38 +86,40 @@ export function Popover({
       if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
     };
     const handleDocumentKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         setOpen(false);
         triggerRef.current?.focus();
       }
     };
-    document.addEventListener("pointerdown", handlePointerDown);
-    document.addEventListener("keydown", handleDocumentKeyDown);
+    document.addEventListener('pointerdown', handlePointerDown);
+    document.addEventListener('keydown', handleDocumentKeyDown);
     return () => {
-      document.removeEventListener("pointerdown", handlePointerDown);
-      document.removeEventListener("keydown", handleDocumentKeyDown);
+      document.removeEventListener('pointerdown', handlePointerDown);
+      document.removeEventListener('keydown', handleDocumentKeyDown);
     };
   }, [isOpen, isControlled, onOpenChange]);
 
   return (
-    <PopoverContext.Provider value={{
-      open: isOpen,
-      setOpen,
-      toggle: () => setOpen(!isOpen),
-      contentId: `${generatedId}-content`,
-      titleId: `${generatedId}-title`,
-      triggerRef,
-      contentRef,
-      placement,
-      triggerMode: trigger,
-    }}>
+    <PopoverContext.Provider
+      value={{
+        open: isOpen,
+        setOpen,
+        toggle: () => setOpen(!isOpen),
+        contentId: `${generatedId}-content`,
+        titleId: `${generatedId}-title`,
+        triggerRef,
+        contentRef,
+        placement,
+        triggerMode: trigger,
+      }}
+    >
       <div
         {...props}
         ref={rootRef}
         className={joinClasses(styles.root, styles[placement], className)}
         onKeyDown={(event) => {
           onKeyDown?.(event);
-          if (!event.defaultPrevented && event.key === "Escape" && isOpen) {
+          if (!event.defaultPrevented && event.key === 'Escape' && isOpen) {
             setOpen(false);
             triggerRef.current?.focus();
           }
@@ -120,9 +132,9 @@ export function Popover({
 }
 
 export function PopoverTrigger({
-  children = "Toggle popover",
-  className = "",
-  type = "button",
+  children = 'Toggle popover',
+  className = '',
+  type = 'button',
   onClick,
   onMouseEnter,
   onMouseLeave,
@@ -144,23 +156,23 @@ export function PopoverTrigger({
       aria-describedby={open ? contentId : undefined}
       onClick={(event) => {
         onClick?.(event);
-        if (!event.defaultPrevented && triggerMode === "click") toggle();
+        if (!event.defaultPrevented && triggerMode === 'click') toggle();
       }}
       onMouseEnter={(event) => {
         onMouseEnter?.(event);
-        if (triggerMode === "hover") setOpen(true);
+        if (triggerMode === 'hover') setOpen(true);
       }}
       onMouseLeave={(event) => {
         onMouseLeave?.(event);
-        if (triggerMode === "hover" && !contentRef.current?.matches(":hover")) setOpen(false);
+        if (triggerMode === 'hover' && !contentRef.current?.matches(':hover')) setOpen(false);
       }}
       onFocus={(event) => {
         onFocus?.(event);
-        if (triggerMode === "focus") setOpen(true);
+        if (triggerMode === 'focus') setOpen(true);
       }}
       onBlur={(event) => {
         onBlur?.(event);
-        if (triggerMode === "focus" && !contentRef.current?.contains(event.relatedTarget as Node)) setOpen(false);
+        if (triggerMode === 'focus' && !contentRef.current?.contains(event.relatedTarget as Node)) setOpen(false);
       }}
     >
       {children}
@@ -171,7 +183,7 @@ export function PopoverTrigger({
 export function PopoverContent({
   title,
   children,
-  className = "",
+  className = '',
   onMouseEnter,
   onMouseLeave,
   ...props
@@ -189,15 +201,19 @@ export function PopoverContent({
       aria-labelledby={title !== undefined ? titleId : undefined}
       onMouseEnter={(event) => {
         onMouseEnter?.(event);
-        if (triggerMode === "hover") setOpen(true);
+        if (triggerMode === 'hover') setOpen(true);
       }}
       onMouseLeave={(event) => {
         onMouseLeave?.(event);
-        if (triggerMode === "hover" && !event.currentTarget.parentElement?.matches(":hover")) setOpen(false);
+        if (triggerMode === 'hover' && !event.currentTarget.parentElement?.matches(':hover')) setOpen(false);
       }}
     >
       <span className={styles.arrow} aria-hidden="true" />
-      {title !== undefined && <div id={titleId} className={styles.header}>{title}</div>}
+      {title !== undefined && (
+        <div id={titleId} className={styles.header}>
+          {title}
+        </div>
+      )}
       <div className={styles.body}>{children}</div>
     </div>
   );

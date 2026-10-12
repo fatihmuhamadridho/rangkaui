@@ -1,9 +1,9 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from 'react';
 
-import styles from "./Badge.module.css";
+import styles from './Badge.module.css';
 
-export type BadgeVariant = "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
-export type BadgePosition = "top-start" | "top-end" | "bottom-start" | "bottom-end";
+export type BadgeVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+export type BadgePosition = 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: BadgeVariant;
@@ -14,26 +14,28 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 export function Badge({
-  variant = "secondary",
+  variant = 'secondary',
   pill = false,
   position,
   dot = false,
-  className = "",
+  className = '',
   children,
-  "aria-label": ariaLabel,
+  'aria-label': ariaLabel,
   ...props
 }: BadgeProps) {
   const classes = [
     styles.badge,
     styles[variant],
     pill && styles.pill,
-    position && styles[position.replace("-", "")],
+    position && styles[position.replace('-', '')],
     dot && styles.dot,
     className,
-  ].filter(Boolean).join(" ");
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <span className={classes} aria-label={ariaLabel ?? (dot ? "Notification" : undefined)} {...props}>
+    <span className={classes} aria-label={ariaLabel ?? (dot ? 'Notification' : undefined)} {...props}>
       {!dot && children}
     </span>
   );

@@ -9,7 +9,9 @@
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
 
-.viewport { overflow: hidden; }
+.viewport {
+  overflow: hidden;
+}
 .track {
   display: flex;
   transition: transform var(--carousel-duration, 600ms) ease-in-out;
@@ -27,8 +29,20 @@
   color: #fff;
   text-align: center;
 }
-.content { display: flex; width: 100%; min-height: 12rem; align-items: center; justify-content: center; }
-.content :where(img, video) { display: block; width: 100%; height: 100%; min-height: 12rem; object-fit: cover; }
+.content {
+  display: flex;
+  width: 100%;
+  min-height: 12rem;
+  align-items: center;
+  justify-content: center;
+}
+.content :where(img, video) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 12rem;
+  object-fit: cover;
+}
 .caption {
   position: absolute;
   right: 15%;
@@ -56,12 +70,27 @@
   opacity: 0.55;
   transition: opacity 150ms ease-in-out;
 }
-.control:hover:not(:disabled) { opacity: 1; }
-.control:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; opacity: 1; }
-.control:disabled { cursor: default; }
-.previous { left: 0; }
-.next { right: 0; }
-.arrow { width: 1.5rem; height: 1.5rem; }
+.control:hover:not(:disabled) {
+  opacity: 1;
+}
+.control:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
+  opacity: 1;
+}
+.control:disabled {
+  cursor: default;
+}
+.previous {
+  left: 0;
+}
+.next {
+  right: 0;
+}
+.arrow {
+  width: 1.5rem;
+  height: 1.5rem;
+}
 
 .indicators {
   position: absolute;
@@ -83,8 +112,13 @@
   cursor: pointer;
   opacity: 0.5;
 }
-.indicatorActive { opacity: 1; }
-.indicator:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.indicatorActive {
+  opacity: 1;
+}
+.indicator:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
 
 .dark {
   --carousel-control-color: #6c757d;
@@ -93,8 +127,14 @@
   background: #f8f9fa;
   color: #212529;
 }
-.dark .slide { background: #f8f9fa; color: #212529; }
+.dark .slide {
+  background: #f8f9fa;
+  color: #212529;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .track, .control { transition: none; }
+  .track,
+  .control {
+    transition: none;
+  }
 }

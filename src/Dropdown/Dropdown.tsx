@@ -13,13 +13,13 @@ import {
   type MouseEventHandler,
   type RefObject,
   type ReactNode,
-} from "react";
+} from 'react';
 
-import styles from "./Dropdown.module.css";
+import styles from './Dropdown.module.css';
 
-export type DropdownPlacement = "bottom-start" | "bottom-end" | "top-start" | "top-end";
-export type DropdownAutoClose = boolean | "inside" | "outside";
-export type DropdownVariant = "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
+export type DropdownPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
+export type DropdownAutoClose = boolean | 'inside' | 'outside';
+export type DropdownVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
 
 interface DropdownContextValue {
   menuId: string;
@@ -51,7 +51,7 @@ export interface DropdownToggleProps extends ButtonHTMLAttributes<HTMLButtonElem
 }
 
 export interface DropdownMenuProps extends HTMLAttributes<HTMLDivElement> {
-  align?: "start" | "end";
+  align?: 'start' | 'end';
   dark?: boolean;
   children?: ReactNode;
 }
@@ -65,10 +65,17 @@ interface DropdownItemBaseProps {
   onClick?: MouseEventHandler<HTMLElement>;
 }
 
-export type DropdownItemProps = DropdownItemBaseProps & (
-  | ({ href: string } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof DropdownItemBaseProps | "href" | "onClick">)
-  | ({ href?: undefined } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof DropdownItemBaseProps | "href" | "onClick">)
-);
+export type DropdownItemProps = DropdownItemBaseProps &
+  (
+    | ({ href: string } & Omit<
+        AnchorHTMLAttributes<HTMLAnchorElement>,
+        keyof DropdownItemBaseProps | 'href' | 'onClick'
+      >)
+    | ({ href?: undefined } & Omit<
+        ButtonHTMLAttributes<HTMLButtonElement>,
+        keyof DropdownItemBaseProps | 'href' | 'onClick'
+      >)
+  );
 
 const toggleVariants: Record<DropdownVariant, string> = {
   primary: styles.primaryToggle,
@@ -83,28 +90,28 @@ const toggleVariants: Record<DropdownVariant, string> = {
 
 function useDropdownContext() {
   const context = useContext(DropdownContext);
-  if (!context) throw new Error("DropdownToggle and DropdownMenu must be rendered inside Dropdown.");
+  if (!context) throw new Error('DropdownToggle and DropdownMenu must be rendered inside Dropdown.');
   return context;
 }
 
 function joinClasses(...classes: Array<string | false | undefined>) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 export function Dropdown({
   open,
   defaultOpen = false,
   onOpenChange,
-  placement = "bottom-start",
+  placement = 'bottom-start',
   autoClose = true,
   dark = false,
   split = false,
   children,
-  className = "",
+  className = '',
   onKeyDown,
   ...props
 }: DropdownProps) {
-  const generatedId = useId().replace(/:/g, "");
+  const generatedId = useId().replace(/:/g, '');
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -118,21 +125,21 @@ export function Dropdown({
   };
 
   useEffect(() => {
-    if (!expanded || (autoClose !== true && autoClose !== "outside")) return;
+    if (!expanded || (autoClose !== true && autoClose !== 'outside')) return;
     const handlePointerDown = (event: PointerEvent) => {
       if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
     };
-    document.addEventListener("pointerdown", handlePointerDown);
-    return () => document.removeEventListener("pointerdown", handlePointerDown);
+    document.addEventListener('pointerdown', handlePointerDown);
+    return () => document.removeEventListener('pointerdown', handlePointerDown);
   }, [expanded, autoClose, isControlled, onOpenChange]);
 
-  const focusMenuItem = (edge: "first" | "last") => {
+  const focusMenuItem = (edge: 'first' | 'last') => {
     window.requestAnimationFrame(() => {
       const menuItems = menuRef.current?.querySelectorAll<HTMLElement>(
-        '[data-dropdown-item]:not([aria-disabled="true"]):not(:disabled)',
+        '[data-dropdown-item]:not([aria-disabled="true"]):not(:disabled)'
       );
       if (!menuItems?.length) return;
-      menuItems[edge === "first" ? 0 : menuItems.length - 1].focus();
+      menuItems[edge === 'first' ? 0 : menuItems.length - 1].focus();
     });
   };
 
@@ -140,32 +147,35 @@ export function Dropdown({
     onKeyDown?.(event);
     if (event.defaultPrevented) return;
 
-    if (event.key === "Escape" && expanded) {
+    if (event.key === 'Escape' && expanded) {
       event.preventDefault();
       setOpen(false);
       triggerRef.current?.focus();
       return;
     }
 
-    if (event.target === triggerRef.current && (event.key === "ArrowDown" || event.key === "ArrowUp")) {
+    if (event.target === triggerRef.current && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
       event.preventDefault();
       setOpen(true);
-      focusMenuItem(event.key === "ArrowDown" ? "first" : "last");
+      focusMenuItem(event.key === 'ArrowDown' ? 'first' : 'last');
       return;
     }
 
-    const menuItems = Array.from(menuRef.current?.querySelectorAll<HTMLElement>(
-      '[data-dropdown-item]:not([aria-disabled="true"]):not(:disabled)',
-    ) ?? []);
+    const menuItems = Array.from(
+      menuRef.current?.querySelectorAll<HTMLElement>(
+        '[data-dropdown-item]:not([aria-disabled="true"]):not(:disabled)'
+      ) ?? []
+    );
     const currentIndex = menuItems.indexOf(event.target as HTMLElement);
-    if (currentIndex < 0 || !["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+    if (currentIndex < 0 || !['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
 
     event.preventDefault();
-    const nextIndex = event.key === "Home"
-      ? 0
-      : event.key === "End"
-        ? menuItems.length - 1
-        : (currentIndex + (event.key === "ArrowDown" ? 1 : menuItems.length - 1)) % menuItems.length;
+    const nextIndex =
+      event.key === 'Home'
+        ? 0
+        : event.key === 'End'
+          ? menuItems.length - 1
+          : (currentIndex + (event.key === 'ArrowDown' ? 1 : menuItems.length - 1)) % menuItems.length;
     menuItems[nextIndex]?.focus();
   };
 
@@ -184,7 +194,13 @@ export function Dropdown({
     <DropdownContext.Provider value={context}>
       <div
         ref={rootRef}
-        className={joinClasses(styles.dropdown, styles[placement], dark && styles.dark, split && styles.split, className)}
+        className={joinClasses(
+          styles.dropdown,
+          styles[placement],
+          dark && styles.dark,
+          split && styles.split,
+          className
+        )}
         onKeyDown={handleKeyDown}
         {...props}
       >
@@ -196,10 +212,10 @@ export function Dropdown({
 
 export function DropdownToggle({
   split = false,
-  variant = "primary",
-  children = split ? null : "Toggle dropdown",
-  className = "",
-  type = "button",
+  variant = 'primary',
+  children = split ? null : 'Toggle dropdown',
+  className = '',
+  type = 'button',
   onClick,
   ...props
 }: DropdownToggleProps) {
@@ -225,26 +241,24 @@ export function DropdownToggle({
   );
 }
 
-export function DropdownMenu({
-  align,
-  dark = false,
-  children,
-  className = "",
-  onClick,
-  ...props
-}: DropdownMenuProps) {
+export function DropdownMenu({ align, dark = false, children, className = '', onClick, ...props }: DropdownMenuProps) {
   const { menuId, open, autoClose, dark: rootDark, menuRef, setOpen } = useDropdownContext();
   return (
     <div
       {...props}
       ref={menuRef}
       id={menuId}
-      className={joinClasses(styles.menu, align && styles[`align${align}`], (dark || rootDark) && styles.menuDark, className)}
+      className={joinClasses(
+        styles.menu,
+        align && styles[`align${align}`],
+        (dark || rootDark) && styles.menuDark,
+        className
+      )}
       role="menu"
       hidden={!open}
       onClick={(event) => {
         onClick?.(event);
-        if (!event.defaultPrevented && (autoClose === true || autoClose === "inside")) setOpen(false);
+        if (!event.defaultPrevented && (autoClose === true || autoClose === 'inside')) setOpen(false);
       }}
     >
       {children}
@@ -259,7 +273,7 @@ export function DropdownItem({
   onSelect,
   onClick,
   children,
-  className = "",
+  className = '',
   ...props
 }: DropdownItemProps) {
   const classes = joinClasses(styles.item, active && styles.active, disabled && styles.disabled, className);
@@ -275,12 +289,12 @@ export function DropdownItem({
   if (href !== undefined) {
     return (
       <a
-        {...props as AnchorHTMLAttributes<HTMLAnchorElement>}
+        {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
         href={disabled ? undefined : href}
         className={classes}
         role="menuitem"
         data-dropdown-item=""
-        aria-current={active ? "true" : undefined}
+        aria-current={active ? 'true' : undefined}
         aria-disabled={disabled || undefined}
         tabIndex={disabled ? -1 : 0}
         onClick={handleClick as MouseEventHandler<HTMLAnchorElement>}
@@ -292,12 +306,12 @@ export function DropdownItem({
 
   return (
     <button
-      {...props as ButtonHTMLAttributes<HTMLButtonElement>}
+      {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
       type="button"
       className={classes}
       role="menuitem"
       data-dropdown-item=""
-      aria-current={active ? "true" : undefined}
+      aria-current={active ? 'true' : undefined}
       aria-disabled={disabled || undefined}
       disabled={disabled}
       tabIndex={disabled ? -1 : 0}
@@ -308,10 +322,14 @@ export function DropdownItem({
   );
 }
 
-export function DropdownHeader({ children, className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div className={joinClasses(styles.header, className)} role="presentation" {...props}>{children}</div>;
+export function DropdownHeader({ children, className = '', ...props }: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div className={joinClasses(styles.header, className)} role="presentation" {...props}>
+      {children}
+    </div>
+  );
 }
 
-export function DropdownDivider({ className = "", ...props }: HTMLAttributes<HTMLHRElement>) {
+export function DropdownDivider({ className = '', ...props }: HTMLAttributes<HTMLHRElement>) {
   return <hr className={joinClasses(styles.divider, className)} role="separator" {...props} />;
 }

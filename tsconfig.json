@@ -12,5 +12,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": ["src", ".storybook", "tsup.config.ts"]
+  "include": ["src", ".storybook", "tsup.config.ts"],
+  "exclude": ["src/**/*.stories.tsx", "node_modules", "dist"]
 }

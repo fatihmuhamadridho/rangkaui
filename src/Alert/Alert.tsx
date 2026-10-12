@@ -1,10 +1,10 @@
-import { useState, type HTMLAttributes, type ReactNode } from "react";
+import { useState, type HTMLAttributes, type ReactNode } from 'react';
 
-import styles from "./Alert.module.css";
+import styles from './Alert.module.css';
 
-export type AlertVariant = "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
+export type AlertVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
 
-export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
+export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   variant?: AlertVariant;
   dismissible?: boolean;
   onClose?: () => void;
@@ -33,14 +33,14 @@ function CloseIcon() {
 }
 
 export function Alert({
-  variant = "primary",
+  variant = 'primary',
   dismissible = false,
   onClose,
   icon,
   title,
   children,
-  className = "",
-  role = "alert",
+  className = '',
+  role = 'alert',
   ...props
 }: AlertProps) {
   const [isVisible, setIsVisible] = useState(true);
@@ -54,11 +54,17 @@ export function Alert({
 
   return (
     <div
-      className={[styles.alert, variants[variant], dismissible && styles.dismissible, className].filter(Boolean).join(" ")}
+      className={[styles.alert, variants[variant], dismissible && styles.dismissible, className]
+        .filter(Boolean)
+        .join(' ')}
       role={role}
       {...props}
     >
-      {icon && <span className={styles.icon} aria-hidden="true">{icon}</span>}
+      {icon && (
+        <span className={styles.icon} aria-hidden="true">
+          {icon}
+        </span>
+      )}
       <div className={styles.content}>
         {title && <div className={styles.title}>{title}</div>}
         {children}

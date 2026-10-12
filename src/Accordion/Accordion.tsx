@@ -1,6 +1,6 @@
-import { useState, type HTMLAttributes, type ReactNode } from "react";
+import { useState, type HTMLAttributes, type ReactNode } from 'react';
 
-import styles from "./Accordion.module.css";
+import styles from './Accordion.module.css';
 
 export interface AccordionItemData {
   id: string;
@@ -32,7 +32,7 @@ export function Accordion({
   allowMultiple = false,
   flush = false,
   headingLevel = 3,
-  className = "",
+  className = '',
   ...props
 }: AccordionProps) {
   const [internalOpenItems, setInternalOpenItems] = useState(() => asList(defaultOpen));
@@ -55,7 +55,7 @@ export function Accordion({
   const Heading = `h${headingLevel}` as const;
 
   return (
-    <div className={[styles.accordion, flush && styles.flush, className].filter(Boolean).join(" ")} {...props}>
+    <div className={[styles.accordion, flush && styles.flush, className].filter(Boolean).join(' ')} {...props}>
       {items.map((item) => {
         const expanded = activeItems.includes(item.id);
         const triggerId = `${item.id}-trigger`;
@@ -67,7 +67,7 @@ export function Accordion({
               <button
                 id={triggerId}
                 type="button"
-                className={[styles.trigger, expanded && styles.expanded].filter(Boolean).join(" ")}
+                className={[styles.trigger, expanded && styles.expanded].filter(Boolean).join(' ')}
                 aria-expanded={expanded}
                 aria-controls={panelId}
                 disabled={item.disabled}
@@ -79,7 +79,7 @@ export function Accordion({
             </Heading>
             <div
               id={panelId}
-              className={[styles.panel, expanded && styles.panelExpanded].filter(Boolean).join(" ")}
+              className={[styles.panel, expanded && styles.panelExpanded].filter(Boolean).join(' ')}
               role="region"
               aria-labelledby={triggerId}
               aria-hidden={!expanded}

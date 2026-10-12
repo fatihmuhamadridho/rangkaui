@@ -15,15 +15,21 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
+    "./*": {
+      "types": "./dist/*/index.d.ts",
+      "import": "./dist/*/index.mjs",
+      "require": "./dist/*/index.cjs"
+    },
     "./style.css": "./dist/index.css"
   },
   "scripts": {
-    "build": "vite build",
-    "postbuild": "tsup --dts-only",
+    "build": "tsup && tsc --project tsconfig.build.json --emitDeclarationOnly --declaration --outDir dist --rootDir src",
     "pack:local": "pnpm pack --pack-destination .",
     "dev": "vite build --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prettier": "prettier --write",
+    "prettier:all": "prettier . --write"
   },
   "keywords": [],
   "author": "",

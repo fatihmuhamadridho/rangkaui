@@ -1,29 +1,29 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-import styles from "./Button.module.css";
+import styles from './Button.module.css';
 
 export type ButtonVariant =
-  | "standard"
-  | "primary"
-  | "secondary"
-  | "base"
-  | "outline-primary"
-  | "outline-secondary"
-  | "link"
-  | "success"
-  | "danger"
-  | "warning"
-  | "info"
-  | "light"
-  | "dark"
-  | "outline-success"
-  | "outline-danger"
-  | "outline-warning"
-  | "outline-info"
-  | "outline-light"
-  | "outline-dark";
+  | 'standard'
+  | 'primary'
+  | 'secondary'
+  | 'base'
+  | 'outline-primary'
+  | 'outline-secondary'
+  | 'link'
+  | 'success'
+  | 'danger'
+  | 'warning'
+  | 'info'
+  | 'light'
+  | 'dark'
+  | 'outline-success'
+  | 'outline-danger'
+  | 'outline-warning'
+  | 'outline-info'
+  | 'outline-light'
+  | 'outline-dark';
 
-export type ButtonSize = "small" | "medium" | "large";
+export type ButtonSize = 'small' | 'medium' | 'large';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -49,8 +49,8 @@ const variants: Record<ButtonVariant, string> = {
   primary: styles.primary,
   secondary: styles.secondary,
   base: styles.base,
-  "outline-primary": styles.outlinePrimary,
-  "outline-secondary": styles.outlineSecondary,
+  'outline-primary': styles.outlinePrimary,
+  'outline-secondary': styles.outlineSecondary,
   link: styles.link,
   success: styles.success,
   danger: styles.danger,
@@ -58,21 +58,21 @@ const variants: Record<ButtonVariant, string> = {
   info: styles.info,
   light: styles.light,
   dark: styles.dark,
-  "outline-success": styles.outlineSuccess,
-  "outline-danger": styles.outlineDanger,
-  "outline-warning": styles.outlineWarning,
-  "outline-info": styles.outlineInfo,
-  "outline-light": styles.outlineLight,
-  "outline-dark": styles.outlineDark,
+  'outline-success': styles.outlineSuccess,
+  'outline-danger': styles.outlineDanger,
+  'outline-warning': styles.outlineWarning,
+  'outline-info': styles.outlineInfo,
+  'outline-light': styles.outlineLight,
+  'outline-dark': styles.outlineDark,
 };
 
 export function Button({
-  variant = "primary",
-  size = "medium",
+  variant = 'primary',
+  size = 'medium',
   iconOnly = false,
-  className = "",
-  type = "button",
-  children = "Button Title",
+  className = '',
+  type = 'button',
+  children = 'Button Title',
   ...props
 }: ButtonProps) {
   return (

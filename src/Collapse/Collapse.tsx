@@ -1,6 +1,14 @@
-import { createContext, useContext, useId, useState, type ButtonHTMLAttributes, type HTMLAttributes, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useId,
+  useState,
+  type ButtonHTMLAttributes,
+  type HTMLAttributes,
+  type ReactNode,
+} from 'react';
 
-import styles from "./Collapse.module.css";
+import styles from './Collapse.module.css';
 
 interface CollapseContextValue {
   panelId: string;
@@ -29,7 +37,7 @@ export interface CollapsePanelProps extends HTMLAttributes<HTMLDivElement> {
 
 function useCollapseContext() {
   const context = useContext(CollapseContext);
-  if (!context) throw new Error("CollapseTrigger and CollapsePanel must be rendered inside Collapse.");
+  if (!context) throw new Error('CollapseTrigger and CollapsePanel must be rendered inside Collapse.');
   return context;
 }
 
@@ -40,10 +48,10 @@ export function Collapse({
   horizontal = false,
   panelId,
   children,
-  className = "",
+  className = '',
   ...props
 }: CollapseProps) {
-  const generatedId = useId().replace(/:/g, "");
+  const generatedId = useId().replace(/:/g, '');
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const isControlled = open !== undefined;
   const expanded = isControlled ? open : internalOpen;
@@ -57,20 +65,29 @@ export function Collapse({
 
   return (
     <CollapseContext.Provider value={{ panelId: resolvedPanelId, open: expanded, toggle }}>
-      <div className={[styles.collapse, horizontal && styles.horizontal, className].filter(Boolean).join(" ")} {...props}>
+      <div
+        className={[styles.collapse, horizontal && styles.horizontal, className].filter(Boolean).join(' ')}
+        {...props}
+      >
         {children}
       </div>
     </CollapseContext.Provider>
   );
 }
 
-export function CollapseTrigger({ children, className = "", type = "button", onClick, ...props }: CollapseTriggerProps) {
+export function CollapseTrigger({
+  children,
+  className = '',
+  type = 'button',
+  onClick,
+  ...props
+}: CollapseTriggerProps) {
   const { panelId, open, toggle } = useCollapseContext();
   return (
     <button
       {...props}
       type={type}
-      className={[styles.trigger, className].filter(Boolean).join(" ")}
+      className={[styles.trigger, className].filter(Boolean).join(' ')}
       aria-expanded={open}
       aria-controls={panelId}
       onClick={(event) => {
@@ -83,13 +100,13 @@ export function CollapseTrigger({ children, className = "", type = "button", onC
   );
 }
 
-export function CollapsePanel({ children, className = "", ...props }: CollapsePanelProps) {
+export function CollapsePanel({ children, className = '', ...props }: CollapsePanelProps) {
   const { panelId, open } = useCollapseContext();
   return (
     <div
       {...props}
       id={panelId}
-      className={[styles.panel, open && styles.open, className].filter(Boolean).join(" ")}
+      className={[styles.panel, open && styles.open, className].filter(Boolean).join(' ')}
       aria-hidden={!open}
       inert={!open}
     >

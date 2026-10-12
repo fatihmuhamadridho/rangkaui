@@ -1,9 +1,9 @@
-import { createContext, useContext, type HTMLAttributes, type MouseEventHandler, type ReactNode } from "react";
+import { createContext, useContext, type HTMLAttributes, type MouseEventHandler, type ReactNode } from 'react';
 
-import styles from "./ListGroup.module.css";
+import styles from './ListGroup.module.css';
 
-export type ListGroupElement = "div" | "ul" | "ol";
-export type ListGroupVariant = "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
+export type ListGroupElement = 'div' | 'ul' | 'ol';
+export type ListGroupVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
 
 interface ListGroupContextValue {
   semanticList: boolean;
@@ -44,26 +44,26 @@ const variantClasses: Record<ListGroupVariant, string> = {
 };
 
 function joinClasses(...classes: Array<string | false | undefined>) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 export function ListGroup({
-  as: Element = "ul",
+  as: Element = 'ul',
   flush = false,
   horizontal = false,
   numbered = false,
   children,
-  className = "",
+  className = '',
   ...props
 }: ListGroupProps) {
-  const semanticList = Element === "ul" || Element === "ol";
+  const semanticList = Element === 'ul' || Element === 'ol';
   const classes = joinClasses(
     styles.listGroup,
     semanticList && styles.semanticList,
     flush && styles.flush,
     horizontal && styles.horizontal,
-    (numbered || Element === "ol") && styles.numbered,
-    className,
+    (numbered || Element === 'ol') && styles.numbered,
+    className
   );
 
   return (
@@ -86,7 +86,7 @@ export function ListGroupItem({
   variant,
   badge,
   children,
-  className = "",
+  className = '',
   onClick,
   ...props
 }: ListGroupItemProps) {
@@ -97,12 +97,14 @@ export function ListGroupItem({
     active && styles.active,
     disabled && styles.disabled,
     variant && variantClasses[variant],
-    className,
+    className
   );
-  const content = <>
-    <div className={styles.itemText}>{children}</div>
-    {badge !== undefined && <span className={styles.badge}>{badge}</span>}
-  </>;
+  const content = (
+    <>
+      <div className={styles.itemText}>{children}</div>
+      {badge !== undefined && <span className={styles.badge}>{badge}</span>}
+    </>
+  );
   const itemOnClick = (event: React.MouseEvent<HTMLElement>) => {
     if (disabled) {
       event.preventDefault();
@@ -113,23 +115,79 @@ export function ListGroupItem({
 
   if (semanticList) {
     return (
-      <li className={itemClasses} aria-current={active ? "true" : undefined} aria-disabled={disabled || undefined}>
+      <li className={itemClasses} aria-current={active ? 'true' : undefined} aria-disabled={disabled || undefined}>
         {href !== undefined ? (
-          <a {...props} href={disabled ? undefined : href} target={target} rel={rel} className={styles.semanticContent} aria-disabled={disabled || undefined} tabIndex={disabled ? -1 : undefined} onClick={itemOnClick}>{content}</a>
+          <a
+            {...props}
+            href={disabled ? undefined : href}
+            target={target}
+            rel={rel}
+            className={styles.semanticContent}
+            aria-disabled={disabled || undefined}
+            tabIndex={disabled ? -1 : undefined}
+            onClick={itemOnClick}
+          >
+            {content}
+          </a>
         ) : button ? (
-          <button {...props} type="button" className={styles.semanticContent} disabled={disabled} aria-current={active ? "true" : undefined} onClick={itemOnClick}>{content}</button>
+          <button
+            {...props}
+            type="button"
+            className={styles.semanticContent}
+            disabled={disabled}
+            aria-current={active ? 'true' : undefined}
+            onClick={itemOnClick}
+          >
+            {content}
+          </button>
         ) : (
-          <div {...props} className={styles.semanticContent}>{content}</div>
+          <div {...props} className={styles.semanticContent}>
+            {content}
+          </div>
         )}
       </li>
     );
   }
 
   if (href !== undefined) {
-    return <a {...props} href={disabled ? undefined : href} target={target} rel={rel} className={itemClasses} aria-current={active ? "true" : undefined} aria-disabled={disabled || undefined} tabIndex={disabled ? -1 : undefined} onClick={itemOnClick}>{content}</a>;
+    return (
+      <a
+        {...props}
+        href={disabled ? undefined : href}
+        target={target}
+        rel={rel}
+        className={itemClasses}
+        aria-current={active ? 'true' : undefined}
+        aria-disabled={disabled || undefined}
+        tabIndex={disabled ? -1 : undefined}
+        onClick={itemOnClick}
+      >
+        {content}
+      </a>
+    );
   }
   if (button) {
-    return <button {...props} type="button" className={itemClasses} disabled={disabled} aria-current={active ? "true" : undefined} onClick={itemOnClick}>{content}</button>;
+    return (
+      <button
+        {...props}
+        type="button"
+        className={itemClasses}
+        disabled={disabled}
+        aria-current={active ? 'true' : undefined}
+        onClick={itemOnClick}
+      >
+        {content}
+      </button>
+    );
   }
-  return <div {...props} className={itemClasses} aria-current={active ? "true" : undefined} aria-disabled={disabled || undefined}>{content}</div>;
+  return (
+    <div
+      {...props}
+      className={itemClasses}
+      aria-current={active ? 'true' : undefined}
+      aria-disabled={disabled || undefined}
+    >
+      {content}
+    </div>
+  );
 }

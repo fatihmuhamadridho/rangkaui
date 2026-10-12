@@ -1,12 +1,15 @@
-import { useState, type InputHTMLAttributes, type ReactNode } from "react";
+import { useState, type InputHTMLAttributes, type ReactNode } from 'react';
 
-import styles from "./InputNumber.module.css";
+import styles from './InputNumber.module.css';
 
-export type InputNumberSize = "small" | "medium" | "large";
+export type InputNumberSize = 'small' | 'medium' | 'large';
 
-export interface InputNumberProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "value" | "defaultValue" | "onChange" | "size" | "prefix"> {
-  value?: number | "";
-  defaultValue?: number | "";
+export interface InputNumberProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'value' | 'defaultValue' | 'onChange' | 'size' | 'prefix'
+> {
+  value?: number | '';
+  defaultValue?: number | '';
   onValueChange?: (value: number | null) => void;
   prefix?: ReactNode;
   suffix?: ReactNode;
@@ -16,21 +19,21 @@ export interface InputNumberProps extends Omit<InputHTMLAttributes<HTMLInputElem
 }
 
 function joinClasses(...classes: Array<string | false | undefined>) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 export function InputNumber({
   value,
-  defaultValue = "",
+  defaultValue = '',
   onValueChange,
   prefix,
   suffix,
   clearable = false,
-  size = "medium",
+  size = 'medium',
   disabled = false,
   readOnly = false,
-  className = "",
-  wrapperClassName = "",
+  className = '',
+  wrapperClassName = '',
   min,
   max,
   step = 1,
@@ -44,7 +47,7 @@ export function InputNumber({
 
   const updateValue = (next: string) => {
     if (!controlled) setInternalValue(next);
-    if (next === "") onValueChange?.(null);
+    if (next === '') onValueChange?.(null);
     else {
       const numeric = Number(next);
       onValueChange?.(Number.isFinite(numeric) ? numeric : null);
@@ -53,7 +56,7 @@ export function InputNumber({
 
   const clear = () => {
     if (disabled || readOnly) return;
-    updateValue("");
+    updateValue('');
   };
 
   return (
@@ -74,7 +77,7 @@ export function InputNumber({
           onBlur?.(event);
           if (event.defaultPrevented) return;
           const numeric = Number(event.currentTarget.value);
-          if (event.currentTarget.value !== "" && Number.isFinite(numeric)) {
+          if (event.currentTarget.value !== '' && Number.isFinite(numeric)) {
             const lower = min === undefined ? numeric : Math.max(numeric, Number(min));
             const bounded = max === undefined ? lower : Math.min(lower, Number(max));
             if (bounded !== numeric) updateValue(String(bounded));
@@ -82,15 +85,24 @@ export function InputNumber({
         }}
         onKeyDown={(event) => {
           onKeyDown?.(event);
-          if (event.key === "Escape") event.currentTarget.blur();
+          if (event.key === 'Escape') event.currentTarget.blur();
         }}
       />
-      {clearable && currentValue !== "" && !disabled && !readOnly && <button type="button" className={styles.clear} aria-label="Clear number" onClick={clear}><ClearIcon /></button>}
+      {clearable && currentValue !== '' && !disabled && !readOnly && (
+        <button type="button" className={styles.clear} aria-label="Clear number" onClick={clear}>
+          <ClearIcon />
+        </button>
+      )}
       {suffix !== undefined && <span className={styles.addon}>{suffix}</span>}
     </div>
   );
 }
 
 function ClearIcon() {
-  return <svg aria-hidden="true" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="currentColor"/><path d="m6 6 4 4m0-4-4 4" fill="none" stroke="white" strokeLinecap="round" strokeWidth="1.5"/></svg>;
+  return (
+    <svg aria-hidden="true" viewBox="0 0 16 16">
+      <circle cx="8" cy="8" r="6" fill="currentColor" />
+      <path d="m6 6 4 4m0-4-4 4" fill="none" stroke="white" strokeLinecap="round" strokeWidth="1.5" />
+    </svg>
+  );
 }

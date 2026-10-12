@@ -21,11 +21,20 @@
   border-top: 1px solid var(--divider-color);
 }
 
-.label { flex: 0 0 auto; }
-.withoutLabel .rule { width: 100%; }
-.left .rule:first-child, .right .rule:last-child { flex: 0 1 2.5rem; }
+.label {
+  flex: 0 0 auto;
+}
+.withoutLabel .rule {
+  width: 100%;
+}
+.left .rule:first-child,
+.right .rule:last-child {
+  flex: 0 1 2.5rem;
+}
 
-.dashed .rule { border-top-style: dashed; }
+.dashed .rule {
+  border-top-style: dashed;
+}
 
 .vertical {
   display: inline-block;
@@ -36,4 +45,6 @@
   vertical-align: middle;
 }
 
-.vertical.dashed { border-left-style: dashed; }
+.vertical.dashed {
+  border-left-style: dashed;
+}

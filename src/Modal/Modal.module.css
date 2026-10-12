@@ -12,8 +12,15 @@
   line-height: 1.25;
   cursor: pointer;
 }
-.trigger:hover { border-color: #0a58ca; background: #0b5ed7; }
-.trigger:focus-visible, .close:focus-visible { outline: 2px solid #86b7fe; outline-offset: 2px; }
+.trigger:hover {
+  border-color: #0a58ca;
+  background: #0b5ed7;
+}
+.trigger:focus-visible,
+.close:focus-visible {
+  outline: 2px solid #86b7fe;
+  outline-offset: 2px;
+}
 
 .backdrop {
   position: fixed;
@@ -28,7 +35,9 @@
   background: rgb(0 0 0 / 50%);
   animation: fade-in 150ms ease-out;
 }
-.centered { align-items: center; }
+.centered {
+  align-items: center;
+}
 
 .dialog {
   position: relative;
@@ -43,23 +52,74 @@
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
   animation: dialog-in 180ms ease-out;
 }
-.sm { max-width: 18.75rem; }
-.md { max-width: 31.25rem; }
-.lg { max-width: 50rem; }
-.xl { max-width: 71.25rem; }
-.fullscreen { max-width: none; min-height: 100%; margin: 0; border-radius: 0; }
-.centered .dialog { margin-top: auto; margin-bottom: auto; }
-.scrollable { max-height: calc(100vh - 3.5rem); overflow: hidden; }
-.scrollable .body { max-height: calc(100vh - 11rem); overflow-y: auto; }
+.sm {
+  max-width: 18.75rem;
+}
+.md {
+  max-width: 31.25rem;
+}
+.lg {
+  max-width: 50rem;
+}
+.xl {
+  max-width: 71.25rem;
+}
+.fullscreen {
+  max-width: none;
+  min-height: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+.centered .dialog {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.scrollable {
+  max-height: calc(100vh - 3.5rem);
+  overflow: hidden;
+}
+.scrollable .body {
+  max-height: calc(100vh - 11rem);
+  overflow-y: auto;
+}
 
-.header, .body, .footer { padding: 1rem; }
-.header { padding-right: 3.5rem; border-bottom: 1px solid #dee2e6; }
-.title { margin: 0; font-size: 1.25rem; font-weight: 500; line-height: 1.5; }
-.description { margin: 0.25rem 0 0; color: #6c757d; }
-.body { position: relative; flex: 1 1 auto; }
-.footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 0.5rem; border-top: 1px solid #dee2e6; }
+.header,
+.body,
+.footer {
+  padding: 1rem;
+}
+.header {
+  padding-right: 3.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.description {
+  margin: 0.25rem 0 0;
+  color: #6c757d;
+}
+.body {
+  position: relative;
+  flex: 1 1 auto;
+}
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  border-top: 1px solid #dee2e6;
+}
 
-.closeButton { position: absolute; top: 0.75rem; right: 0.75rem; }
+.closeButton {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
 .close {
   display: inline-flex;
   width: 2rem;
@@ -74,8 +134,13 @@
   cursor: pointer;
   opacity: 0.65;
 }
-.close:hover { opacity: 1; }
-.close svg { width: 1rem; height: 1rem; }
+.close:hover {
+  opacity: 1;
+}
+.close svg {
+  width: 1rem;
+  height: 1rem;
+}
 .actionClose {
   display: inline-flex;
   min-height: 2rem;
@@ -90,19 +155,54 @@
   line-height: 1.25;
   cursor: pointer;
 }
-.actionClose:hover { background: #5c636a; }
-.actionPrimary { border-color: #0d6efd; background: #0d6efd; color: #fff; }
-.actionPrimary:hover { background: #0b5ed7; }
-.actionSecondary { border-color: #6c757d; background: #6c757d; color: #fff; }
+.actionClose:hover {
+  background: #5c636a;
+}
+.actionPrimary {
+  border-color: #0d6efd;
+  background: #0d6efd;
+  color: #fff;
+}
+.actionPrimary:hover {
+  background: #0b5ed7;
+}
+.actionSecondary {
+  border-color: #6c757d;
+  background: #6c757d;
+  color: #fff;
+}
 
-@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes dialog-in { from { transform: translateY(-0.75rem); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes dialog-in {
+  from {
+    transform: translateY(-0.75rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 @media (max-width: 36rem) {
-  .dialog { margin: 0.5rem auto; }
-  .fullscreen { margin: 0; }
+  .dialog {
+    margin: 0.5rem auto;
+  }
+  .fullscreen {
+    margin: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .backdrop, .dialog { animation: none; }
+  .backdrop,
+  .dialog {
+    animation: none;
+  }
 }

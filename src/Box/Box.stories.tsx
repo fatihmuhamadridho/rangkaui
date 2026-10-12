@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Box } from "./Box";
+import { Box } from './Box';
 
 const meta = {
-  title: "Layout/Box",
+  title: 'Layout/Box',
   component: Box,
-  parameters: { layout: "padded" },
+  parameters: { layout: 'padded' },
   args: {
-    children: "Box content",
+    children: 'Box content',
     padded: true,
     bordered: true,
     rounded: true,
@@ -23,9 +23,7 @@ export const Card: Story = {
   render: () => (
     <Box padded bordered rounded shadow>
       <h2 className="text-lg font-semibold">Card title</h2>
-      <p className="mt-2 text-sm text-muted">
-        Box provides a div-like layout primitive for grouping content.
-      </p>
+      <p className="mt-2 text-sm text-muted">Box provides a div-like layout primitive for grouping content.</p>
     </Box>
   ),
 };

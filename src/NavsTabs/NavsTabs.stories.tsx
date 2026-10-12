@@ -1,26 +1,28 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { NavsTabs, NavsTabsList, NavsTabsPanel, NavsTabsTab, type NavsTabsVariant } from "./NavsTabs";
+import { NavsTabs, NavsTabsList, NavsTabsPanel, NavsTabsTab, type NavsTabsVariant } from './NavsTabs';
 
-const examples: NavsTabsVariant[] = ["tabs", "pills", "underline", "plain"];
+const examples: NavsTabsVariant[] = ['tabs', 'pills', 'underline', 'plain'];
 
 export default {
-  title: "Components/Navs and Tabs",
+  title: 'Components/Navs and Tabs',
   component: NavsTabs,
 };
 
 export function Variants() {
   return (
-    <div style={{ display: "grid", gap: "2rem" }}>
+    <div style={{ display: 'grid', gap: '2rem' }}>
       {examples.map((variant) => (
         <NavsTabs key={variant} defaultActiveKey="home" variant={variant}>
           <NavsTabsList label={`${variant} navigation`}>
             <NavsTabsTab tabKey="home">Home</NavsTabsTab>
             <NavsTabsTab tabKey="profile">Profile</NavsTabsTab>
             <NavsTabsTab tabKey="contact">Contact</NavsTabsTab>
-            <NavsTabsTab tabKey="disabled" disabled>Disabled</NavsTabsTab>
+            <NavsTabsTab tabKey="disabled" disabled>
+              Disabled
+            </NavsTabsTab>
           </NavsTabsList>
-          {variant !== "plain" && (
+          {variant !== 'plain' && (
             <>
               <NavsTabsPanel tabKey="home">Home tab content.</NavsTabsPanel>
               <NavsTabsPanel tabKey="profile">Profile tab content.</NavsTabsPanel>
@@ -50,7 +52,7 @@ export function Vertical() {
 }
 
 export function Justified() {
-  const [activeKey, setActiveKey] = useState("home");
+  const [activeKey, setActiveKey] = useState('home');
   return (
     <NavsTabs activeKey={activeKey} onChange={setActiveKey} variant="pills" justified>
       <NavsTabsList>
