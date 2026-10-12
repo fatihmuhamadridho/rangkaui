@@ -1,24 +1,24 @@
 {
   "name": "rangkaui",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "style": "./dist/index.css",
+  "main": "./dist/core/cjs/index.cjs",
+  "module": "./dist/core/esm/index.mjs",
+  "types": "./dist/lib/index.d.ts",
+  "style": "./dist/styles.css",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "types": "./dist/lib/index.d.ts",
+      "import": "./dist/core/esm/index.mjs",
+      "require": "./dist/core/cjs/index.cjs"
     },
-    "./style.css": "./dist/index.css"
+    "./style.css": "./dist/styles.css"
   },
   "scripts": {
-    "build": "tsup && tsc --project tsconfig.build.json --emitDeclarationOnly --declaration --outDir dist --rootDir src",
+    "build": "node scripts/clean-dist.mjs && tsup && tsc --project tsconfig.build.json --emitDeclarationOnly --declaration --outDir dist/lib --rootDir src && node scripts/prepare-dist.mjs",
     "pack:local": "pnpm pack --pack-destination .",
     "dev": "vite build --watch",
     "storybook": "storybook dev -p 6006",

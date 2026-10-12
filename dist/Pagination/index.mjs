@@ -1,3 +1,0 @@
-export * from './Pagination';
-//# sourceMappingURL=index.mjs.map
-//# sourceMappingURL=index.mjs.map

@@ -8,25 +8,41 @@ const componentEntries = Object.fromEntries(
       const tsxEntry = `src/${name}/index.tsx`;
       const tsEntry = `src/${name}/index.ts`;
       const entry = existsSync(tsxEntry) ? tsxEntry : existsSync(tsEntry) ? tsEntry : null;
-      return entry ? [[`${name}/index`, entry]] : [];
+      return entry ? [[`components/${name}/index`, entry]] : [];
     })
 );
 
-export default defineConfig({
-  entry: {
-    index: 'src/index.ts',
-    ...componentEntries,
-  },
-  format: ['esm', 'cjs'],
+const entries = {
+  index: 'src/index.ts',
+  ...componentEntries,
+};
+
+const shared = {
+  entry: entries,
   dts: false,
-  bundle: false,
+  bundle: true,
+  splitting: false,
   sourcemap: true,
   clean: true,
   treeshake: true,
   external: ['react', 'react-dom', 'react/jsx-runtime'],
-  outExtension({ format }) {
-    return {
-      js: format === 'esm' ? '.mjs' : '.cjs',
-    };
+};
+
+export default defineConfig([
+  {
+    ...shared,
+    format: ['cjs'],
+    outDir: 'dist/core/cjs',
+    outExtension() {
+      return { js: '.cjs' };
+    },
   },
-});
+  {
+    ...shared,
+    format: ['esm'],
+    outDir: 'dist/core/esm',
+    outExtension() {
+      return { js: '.mjs' };
+    },
+  },
+]);
