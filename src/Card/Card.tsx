@@ -47,7 +47,7 @@ function classes(...values: Array<string | false | undefined>) {
   return values.filter(Boolean).join(' ');
 }
 
-export function Card({
+export const Card = ({
   variant,
   outline = false,
   shadow = false,
@@ -55,7 +55,7 @@ export function Card({
   className = '',
   children,
   ...props
-}: CardProps) {
+}: CardProps) => {
   return (
     <div
       className={classes(
@@ -71,104 +71,104 @@ export function Card({
       {children}
     </div>
   );
-}
+};
 
-export function CardHeader({ children, className = '', ...props }: CardSectionProps) {
+export const CardHeader = ({ children, className = '', ...props }: CardSectionProps) => {
   return (
     <div className={classes(styles.header, className)} {...props}>
       {children}
     </div>
   );
-}
+};
 
-export function CardBody({ children, className = '', ...props }: CardSectionProps) {
+export const CardBody = ({ children, className = '', ...props }: CardSectionProps) => {
   return (
     <div className={classes(styles.body, className)} {...props}>
       {children}
     </div>
   );
-}
+};
 
-export function CardFooter({ children, className = '', ...props }: CardSectionProps) {
+export const CardFooter = ({ children, className = '', ...props }: CardSectionProps) => {
   return (
     <div className={classes(styles.footer, className)} {...props}>
       {children}
     </div>
   );
-}
+};
 
-export function CardTitle({ as: Heading = 'h5', children, className = '', ...props }: CardHeadingProps) {
+export const CardTitle = ({ as: Heading = 'h5', children, className = '', ...props }: CardHeadingProps) => {
   return (
     <Heading className={classes(styles.title, className)} {...props}>
       {children}
     </Heading>
   );
-}
+};
 
-export function CardSubtitle({ as: Heading = 'h6', children, className = '', ...props }: CardHeadingProps) {
+export const CardSubtitle = ({ as: Heading = 'h6', children, className = '', ...props }: CardHeadingProps) => {
   return (
     <Heading className={classes(styles.subtitle, className)} {...props}>
       {children}
     </Heading>
   );
-}
+};
 
-export function CardText({ children, className = '', ...props }: HTMLAttributes<HTMLParagraphElement>) {
+export const CardText = ({ children, className = '', ...props }: HTMLAttributes<HTMLParagraphElement>) => {
   return (
     <p className={classes(styles.text, className)} {...props}>
       {children}
     </p>
   );
-}
+};
 
-export function CardLink({ children, className = '', ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
+export const CardLink = ({ children, className = '', ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
   return (
     <a className={classes(styles.link, className)} {...props}>
       {children}
     </a>
   );
-}
+};
 
-export function CardImage({ placement = 'top', className = '', ...props }: CardImageProps) {
+export const CardImage = ({ placement = 'top', className = '', ...props }: CardImageProps) => {
   return <img className={classes(styles.image, placement === 'bottom' && styles.imageBottom, className)} {...props} />;
-}
+};
 
-export function CardImageOverlay({ children, className = '', ...props }: CardSectionProps) {
+export const CardImageOverlay = ({ children, className = '', ...props }: CardSectionProps) => {
   return (
     <div className={classes(styles.imageOverlay, className)} {...props}>
       {children}
     </div>
   );
-}
+};
 
-export function CardListGroup({ children, className = '', ...props }: HTMLAttributes<HTMLUListElement>) {
+export const CardListGroup = ({ children, className = '', ...props }: HTMLAttributes<HTMLUListElement>) => {
   return (
     <ul className={classes(styles.listGroup, className)} {...props}>
       {children}
     </ul>
   );
-}
+};
 
-export function CardListGroupItem({ children, className = '', ...props }: HTMLAttributes<HTMLLIElement>) {
+export const CardListGroupItem = ({ children, className = '', ...props }: HTMLAttributes<HTMLLIElement>) => {
   return (
     <li className={classes(styles.listGroupItem, className)} {...props}>
       {children}
     </li>
   );
-}
+};
 
-export function CardGroup({
+export const CardGroup = ({
   layout = 'group',
   columns = 3,
   children,
   className = '',
   style,
   ...props
-}: CardGroupProps) {
+}: CardGroupProps) => {
   const groupStyle = { ...style, '--card-columns': Math.max(1, columns) } as CSSProperties;
   return (
     <div className={classes(styles.cardGroup, styles[layout], className)} style={groupStyle} {...props}>
       {children}
     </div>
   );
-}
+};

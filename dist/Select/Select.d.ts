@@ -5,4 +5,4 @@ export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement
     nativeSize?: number;
     children?: ReactNode;
 }
-export declare function Select({ size, nativeSize, multiple, disabled, className, children, ...props }: SelectProps): import("react").JSX.Element;
+export declare const Select: ({ size, nativeSize, multiple, disabled, className, children, ...props }: SelectProps) => import("react").JSX.Element;

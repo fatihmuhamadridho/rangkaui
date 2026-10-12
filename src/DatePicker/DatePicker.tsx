@@ -53,7 +53,7 @@ function sameDay(left: Date | null, right: Date | null) {
   );
 }
 
-export function DatePicker({
+export const DatePicker = ({
   mode = 'date',
   value,
   defaultValue,
@@ -69,7 +69,7 @@ export function DatePicker({
   closeOnSelect = true,
   className = '',
   ...props
-}: DatePickerProps) {
+}: DatePickerProps) => {
   const id = useId().replace(/:/g, '');
   const rootRef = useRef<HTMLDivElement>(null);
   const controlled = value !== undefined;
@@ -385,9 +385,9 @@ export function DatePicker({
       )}
     </div>
   );
-}
+};
 
-function CalendarIcon() {
+const CalendarIcon = () => {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16">
       <rect x="2" y="3" width="12" height="11" rx="1" fill="none" stroke="currentColor" />
@@ -395,4 +395,4 @@ function CalendarIcon() {
       <path d="m7 9 1 1 2-2" fill="none" stroke="currentColor" strokeWidth="1.2" />
     </svg>
   );
-}
+};

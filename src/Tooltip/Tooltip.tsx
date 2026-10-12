@@ -64,7 +64,7 @@ function useTooltipContext() {
   return context;
 }
 
-export function Tooltip({
+export const Tooltip = ({
   content,
   placement = 'top',
   trigger = 'hover',
@@ -75,7 +75,7 @@ export function Tooltip({
   children,
   className = '',
   ...props
-}: TooltipProps) {
+}: TooltipProps) => {
   const generatedId = useId().replace(/:/g, '');
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -135,9 +135,9 @@ export function Tooltip({
       </div>
     </TooltipContext.Provider>
   );
-}
+};
 
-export function TooltipTrigger({
+export const TooltipTrigger = ({
   children = 'Show tooltip',
   className = '',
   type = 'button',
@@ -147,7 +147,7 @@ export function TooltipTrigger({
   onFocus,
   onBlur,
   ...props
-}: TooltipTriggerProps) {
+}: TooltipTriggerProps) => {
   const { open, setOpen, toggle, tooltipId, triggerRef, contentRef, triggerMode } = useTooltipContext();
 
   return (
@@ -187,9 +187,9 @@ export function TooltipTrigger({
       {children}
     </button>
   );
-}
+};
 
-export function TooltipLink({
+export const TooltipLink = ({
   children,
   className = '',
   onClick,
@@ -198,7 +198,7 @@ export function TooltipLink({
   onFocus,
   onBlur,
   ...props
-}: TooltipLinkProps) {
+}: TooltipLinkProps) => {
   const { setOpen, toggle, tooltipId, triggerRef, contentRef, triggerMode, open } = useTooltipContext();
 
   return (
@@ -240,4 +240,4 @@ export function TooltipLink({
       {children}
     </a>
   );
-}
+};

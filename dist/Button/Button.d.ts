@@ -7,4 +7,4 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     iconOnly?: boolean;
     children?: ReactNode;
 }
-export declare function Button({ variant, size, iconOnly, className, type, children, ...props }: ButtonProps): import("react").JSX.Element;
+export declare const Button: ({ variant, size, iconOnly, className, type, children, ...props }: ButtonProps) => import("react").JSX.Element;

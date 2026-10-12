@@ -14,4 +14,4 @@ export interface AccordionProps extends HTMLAttributes<HTMLDivElement> {
     flush?: boolean;
     headingLevel?: 2 | 3 | 4 | 5 | 6;
 }
-export declare function Accordion({ items, defaultOpen, openItems, onOpenItemsChange, allowMultiple, flush, headingLevel, className, ...props }: AccordionProps): import("react").JSX.Element;
+export declare const Accordion: ({ items, defaultOpen, openItems, onOpenItemsChange, allowMultiple, flush, headingLevel, className, ...props }: AccordionProps) => import("react").JSX.Element;

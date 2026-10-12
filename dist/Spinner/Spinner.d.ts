@@ -8,4 +8,4 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
     size?: SpinnerSize;
     label?: string;
 }
-export declare function Spinner({ variant, color, size, label, className, ...props }: SpinnerProps): import("react").JSX.Element;
+export declare const Spinner: ({ variant, color, size, label, className, ...props }: SpinnerProps) => import("react").JSX.Element;

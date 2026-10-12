@@ -20,7 +20,7 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function Skeleton({
+export const Skeleton = ({
   animation = 'none',
   size,
   color = 'default',
@@ -30,7 +30,7 @@ export function Skeleton({
   style,
   'aria-hidden': ariaHidden = true,
   ...props
-}: SkeletonProps) {
+}: SkeletonProps) => {
   const normalizedWidth = typeof width === 'number' ? `${width}px` : width;
 
   return (
@@ -47,4 +47,4 @@ export function Skeleton({
       {...props}
     />
   );
-}
+};

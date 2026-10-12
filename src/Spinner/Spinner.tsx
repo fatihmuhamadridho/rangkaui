@@ -17,14 +17,14 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function Spinner({
+export const Spinner = ({
   variant = 'border',
   color,
   size,
   label = 'Loading...',
   className = '',
   ...props
-}: SpinnerProps) {
+}: SpinnerProps) => {
   return (
     <span
       {...props}
@@ -41,4 +41,4 @@ export function Spinner({
       <span className={styles.visuallyHidden}>{label}</span>
     </span>
   );
-}
+};

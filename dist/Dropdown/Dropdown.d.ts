@@ -34,10 +34,10 @@ export type DropdownItemProps = DropdownItemBaseProps & (({
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof DropdownItemBaseProps | 'href' | 'onClick'>) | ({
     href?: undefined;
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof DropdownItemBaseProps | 'href' | 'onClick'>));
-export declare function Dropdown({ open, defaultOpen, onOpenChange, placement, autoClose, dark, split, children, className, onKeyDown, ...props }: DropdownProps): import("react").JSX.Element;
-export declare function DropdownToggle({ split, variant, children, className, type, onClick, ...props }: DropdownToggleProps): import("react").JSX.Element;
-export declare function DropdownMenu({ align, dark, children, className, onClick, ...props }: DropdownMenuProps): import("react").JSX.Element;
-export declare function DropdownItem({ href, active, disabled, onSelect, onClick, children, className, ...props }: DropdownItemProps): import("react").JSX.Element;
-export declare function DropdownHeader({ children, className, ...props }: HTMLAttributes<HTMLDivElement>): import("react").JSX.Element;
-export declare function DropdownDivider({ className, ...props }: HTMLAttributes<HTMLHRElement>): import("react").JSX.Element;
+export declare const Dropdown: ({ open, defaultOpen, onOpenChange, placement, autoClose, dark, split, children, className, onKeyDown, ...props }: DropdownProps) => import("react").JSX.Element;
+export declare const DropdownToggle: ({ split, variant, children, className, type, onClick, ...props }: DropdownToggleProps) => import("react").JSX.Element;
+export declare const DropdownMenu: ({ align, dark, children, className, onClick, ...props }: DropdownMenuProps) => import("react").JSX.Element;
+export declare const DropdownItem: ({ href, active, disabled, onSelect, onClick, children, className, ...props }: DropdownItemProps) => import("react").JSX.Element;
+export declare const DropdownHeader: ({ children, className, ...props }: HTMLAttributes<HTMLDivElement>) => import("react").JSX.Element;
+export declare const DropdownDivider: ({ className, ...props }: HTMLAttributes<HTMLHRElement>) => import("react").JSX.Element;
 export {};

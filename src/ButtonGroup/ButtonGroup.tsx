@@ -34,7 +34,7 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function ButtonGroup({
+export const ButtonGroup = ({
   children,
   orientation = 'horizontal',
   size,
@@ -42,7 +42,7 @@ export function ButtonGroup({
   role = 'group',
   'aria-label': ariaLabel = 'Button group',
   ...props
-}: ButtonGroupProps) {
+}: ButtonGroupProps) => {
   return (
     <div
       className={joinClasses(styles.buttonGroup, styles[orientation], size && styles[size], className)}
@@ -53,23 +53,23 @@ export function ButtonGroup({
       {children}
     </div>
   );
-}
+};
 
-export function ButtonToolbar({
+export const ButtonToolbar = ({
   children,
   className = '',
   role = 'toolbar',
   'aria-label': ariaLabel = 'Button toolbar',
   ...props
-}: ButtonToolbarProps) {
+}: ButtonToolbarProps) => {
   return (
     <div className={joinClasses(styles.toolbar, className)} role={role} aria-label={ariaLabel} {...props}>
       {children}
     </div>
   );
-}
+};
 
-export function ButtonGroupToggle({
+export const ButtonGroupToggle = ({
   options,
   type,
   name,
@@ -79,7 +79,7 @@ export function ButtonGroupToggle({
   className = '',
   'aria-label': ariaLabel = `${type === 'radio' ? 'Radio' : 'Checkbox'} button group`,
   ...props
-}: ButtonGroupToggleProps) {
+}: ButtonGroupToggleProps) => {
   const [internalValue, setInternalValue] = useState(defaultValue);
   const isControlled = value !== undefined;
   const selectedValues = isControlled ? value : internalValue;
@@ -131,4 +131,4 @@ export function ButtonGroupToggle({
       })}
     </div>
   );
-}
+};

@@ -32,7 +32,7 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function Text({
+export const Text = ({
   as = 'p',
   variant = 'body',
   align,
@@ -40,7 +40,7 @@ export function Text({
   children,
   className = '',
   ...props
-}: TextProps) {
+}: TextProps) => {
   return createElement(
     as,
     {
@@ -55,7 +55,7 @@ export function Text({
     },
     children
   );
-}
+};
 
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   level?: HeadingLevel;
@@ -63,39 +63,39 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   children?: ReactNode;
 }
 
-export function Heading({ level = 2, visualLevel = level, children, className = '', ...props }: HeadingProps) {
+export const Heading = ({ level = 2, visualLevel = level, children, className = '', ...props }: HeadingProps) => {
   const Component = `h${level}` as const;
   return (
     <Component {...props} className={joinClasses(styles.heading, styles[`heading${visualLevel}`], className)}>
       {children}
     </Component>
   );
-}
+};
 
 export interface DisplayProps extends HTMLAttributes<HTMLHeadingElement> {
   level?: HeadingLevel;
   children?: ReactNode;
 }
 
-export function Display({ level = 1, children, className = '', ...props }: DisplayProps) {
+export const Display = ({ level = 1, children, className = '', ...props }: DisplayProps) => {
   return (
     <h1 {...props} className={joinClasses(styles.display, styles[`display${level}`], className)}>
       {children}
     </h1>
   );
-}
+};
 
 export interface LeadProps extends HTMLAttributes<HTMLParagraphElement> {
   children?: ReactNode;
 }
 
-export function Lead({ children, className = '', ...props }: LeadProps) {
+export const Lead = ({ children, className = '', ...props }: LeadProps) => {
   return (
     <p {...props} className={joinClasses(styles.text, styles.lead, className)}>
       {children}
     </p>
   );
-}
+};
 
 export interface BlockquoteProps extends HTMLAttributes<HTMLQuoteElement> {
   cite?: string;
@@ -104,7 +104,7 @@ export interface BlockquoteProps extends HTMLAttributes<HTMLQuoteElement> {
   children?: ReactNode;
 }
 
-export function Blockquote({ cite, footer, align, children, className = '', ...props }: BlockquoteProps) {
+export const Blockquote = ({ cite, footer, align, children, className = '', ...props }: BlockquoteProps) => {
   return (
     <figure className={joinClasses(styles.blockquoteFigure, align && styles[`align${align}`])}>
       <blockquote {...props} cite={cite} className={joinClasses(styles.blockquote, className)}>
@@ -123,7 +123,7 @@ export function Blockquote({ cite, footer, align, children, className = '', ...p
       )}
     </figure>
   );
-}
+};
 
 export interface TextListProps extends HTMLAttributes<HTMLOListElement> {
   as?: 'ul' | 'ol';
@@ -132,14 +132,14 @@ export interface TextListProps extends HTMLAttributes<HTMLOListElement> {
   children?: ReactNode;
 }
 
-export function TextList({
+export const TextList = ({
   as = 'ul',
   unstyled = false,
   inline = false,
   children,
   className = '',
   ...props
-}: TextListProps) {
+}: TextListProps) => {
   const Component = as;
   return (
     <Component
@@ -149,33 +149,33 @@ export function TextList({
       {children}
     </Component>
   );
-}
+};
 
 export interface DescriptionListProps extends HTMLAttributes<HTMLDListElement> {
   horizontal?: boolean;
   children?: ReactNode;
 }
 
-export function DescriptionList({ horizontal = false, children, className = '', ...props }: DescriptionListProps) {
+export const DescriptionList = ({ horizontal = false, children, className = '', ...props }: DescriptionListProps) => {
   return (
     <dl {...props} className={joinClasses(styles.descriptionList, horizontal && styles.horizontal, className)}>
       {children}
     </dl>
   );
-}
+};
 
-export function DescriptionTerm({ children, className = '', ...props }: HTMLAttributes<HTMLElement>) {
+export const DescriptionTerm = ({ children, className = '', ...props }: HTMLAttributes<HTMLElement>) => {
   return (
     <dt {...props} className={joinClasses(styles.term, className)}>
       {children}
     </dt>
   );
-}
+};
 
-export function DescriptionDetails({ children, className = '', ...props }: HTMLAttributes<HTMLElement>) {
+export const DescriptionDetails = ({ children, className = '', ...props }: HTMLAttributes<HTMLElement>) => {
   return (
     <dd {...props} className={joinClasses(styles.details, className)}>
       {children}
     </dd>
   );
-}
+};

@@ -13,14 +13,14 @@ export interface DividerProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
-export function Divider({
+export const Divider = ({
   orientation = 'horizontal',
   variant = 'solid',
   align = 'center',
   children,
   className = '',
   ...props
-}: DividerProps) {
+}: DividerProps) => {
   if (orientation === 'vertical') {
     return (
       <div
@@ -53,4 +53,4 @@ export function Divider({
       {children && <span className={styles.rule} aria-hidden="true" />}
     </div>
   );
-}
+};

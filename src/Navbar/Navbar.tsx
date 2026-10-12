@@ -75,7 +75,7 @@ const positionClasses: Record<NavbarPosition, string | undefined> = {
   'sticky-top': styles.stickytop,
 };
 
-export function Navbar({
+export const Navbar = ({
   expand = 'lg',
   theme = 'light',
   position = 'static',
@@ -86,7 +86,7 @@ export function Navbar({
   className = '',
   'aria-label': ariaLabel = 'Main navigation',
   ...props
-}: NavbarProps) {
+}: NavbarProps) => {
   const generatedId = useId().replace(/:/g, '');
   const [internalExpanded, setInternalExpanded] = useState(defaultExpanded);
   const isControlled = expanded !== undefined;
@@ -113,17 +113,17 @@ export function Navbar({
       </nav>
     </NavbarContext.Provider>
   );
-}
+};
 
-export function NavbarBrand({ children, className = '', ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
+export const NavbarBrand = ({ children, className = '', ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
   return (
     <a className={joinClasses(styles.brand, className)} {...props}>
       {children}
     </a>
   );
-}
+};
 
-export function NavbarToggle({ children, className = '', type = 'button', onClick, ...props }: NavbarToggleProps) {
+export const NavbarToggle = ({ children, className = '', type = 'button', onClick, ...props }: NavbarToggleProps) => {
   const { collapseId, expanded, setExpanded } = useNavbarContext();
   return (
     <button
@@ -147,41 +147,41 @@ export function NavbarToggle({ children, className = '', type = 'button', onClic
       )}
     </button>
   );
-}
+};
 
-export function NavbarCollapse({ children, className = '', ...props }: NavbarCollapseProps) {
+export const NavbarCollapse = ({ children, className = '', ...props }: NavbarCollapseProps) => {
   const { collapseId, expanded } = useNavbarContext();
   return (
     <div id={collapseId} className={joinClasses(styles.collapse, expanded && styles.expanded, className)} {...props}>
       {children}
     </div>
   );
-}
+};
 
-export function NavbarNav({ align = 'start', children, className = '', ...props }: NavbarNavProps) {
+export const NavbarNav = ({ align = 'start', children, className = '', ...props }: NavbarNavProps) => {
   return (
     <ul className={joinClasses(styles.nav, styles[`align${align}`], className)} {...props}>
       {children}
     </ul>
   );
-}
+};
 
-export function NavbarItem({ children, className = '', ...props }: HTMLAttributes<HTMLLIElement>) {
+export const NavbarItem = ({ children, className = '', ...props }: HTMLAttributes<HTMLLIElement>) => {
   return (
     <li className={joinClasses(styles.item, className)} {...props}>
       {children}
     </li>
   );
-}
+};
 
-export function NavbarLink({
+export const NavbarLink = ({
   active = false,
   disabled = false,
   children,
   className = '',
   onClick,
   ...props
-}: NavbarLinkProps) {
+}: NavbarLinkProps) => {
   return (
     <a
       {...props}
@@ -197,20 +197,20 @@ export function NavbarLink({
       {children}
     </a>
   );
-}
+};
 
-export function NavbarText({ children, className = '', ...props }: HTMLAttributes<HTMLSpanElement>) {
+export const NavbarText = ({ children, className = '', ...props }: HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span className={joinClasses(styles.text, className)} {...props}>
       {children}
     </span>
   );
-}
+};
 
-export function NavbarContainer({ fluid = false, children, className = '', ...props }: NavbarContainerProps) {
+export const NavbarContainer = ({ fluid = false, children, className = '', ...props }: NavbarContainerProps) => {
   return (
     <div className={joinClasses(styles.container, fluid && styles.fluid, className)} {...props}>
       {children}
     </div>
   );
-}
+};

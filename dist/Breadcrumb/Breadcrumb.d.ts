@@ -8,4 +8,4 @@ export interface BreadcrumbProps extends HTMLAttributes<HTMLElement> {
     items: BreadcrumbItemData[];
     divider?: string;
 }
-export declare function Breadcrumb({ items, divider, className, 'aria-label': ariaLabel, style, ...props }: BreadcrumbProps): import("react").JSX.Element;
+export declare const Breadcrumb: ({ items, divider, className, "aria-label": ariaLabel, style, ...props }: BreadcrumbProps) => import("react").JSX.Element;

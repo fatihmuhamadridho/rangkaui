@@ -15,6 +15,6 @@ export interface PopoverContentProps extends Omit<HTMLAttributes<HTMLDivElement>
     title?: ReactNode;
     children?: ReactNode;
 }
-export declare function Popover({ open, defaultOpen, onOpenChange, placement, trigger, children, className, onKeyDown, ...props }: PopoverProps): import("react").JSX.Element;
-export declare function PopoverTrigger({ children, className, type, onClick, onMouseEnter, onMouseLeave, onFocus, onBlur, ...props }: PopoverTriggerProps): import("react").JSX.Element;
-export declare function PopoverContent({ title, children, className, onMouseEnter, onMouseLeave, ...props }: PopoverContentProps): import("react").JSX.Element | null;
+export declare const Popover: ({ open, defaultOpen, onOpenChange, placement, trigger, children, className, onKeyDown, ...props }: PopoverProps) => import("react").JSX.Element;
+export declare const PopoverTrigger: ({ children, className, type, onClick, onMouseEnter, onMouseLeave, onFocus, onBlur, ...props }: PopoverTriggerProps) => import("react").JSX.Element;
+export declare const PopoverContent: ({ title, children, className, onMouseEnter, onMouseLeave, ...props }: PopoverContentProps) => import("react").JSX.Element | null;

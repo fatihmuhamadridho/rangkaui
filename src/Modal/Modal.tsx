@@ -75,14 +75,14 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function Modal({
+export const Modal = ({
   open,
   defaultOpen = false,
   onOpenChange,
   closeOnEscape = true,
   closeOnBackdrop = true,
   children,
-}: ModalProps) {
+}: ModalProps) => {
   const generatedId = useId().replace(/:/g, '');
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const isControlled = open !== undefined;
@@ -106,15 +106,15 @@ export function Modal({
       {children}
     </ModalContext.Provider>
   );
-}
+};
 
-export function ModalTrigger({
+export const ModalTrigger = ({
   children = 'Open modal',
   className = '',
   type = 'button',
   onClick,
   ...props
-}: ModalTriggerProps) {
+}: ModalTriggerProps) => {
   const { open, setOpen } = useModalContext();
   return (
     <button
@@ -131,9 +131,9 @@ export function ModalTrigger({
       {children}
     </button>
   );
-}
+};
 
-export function ModalContent({
+export const ModalContent = ({
   size = 'md',
   centered = false,
   scrollable = false,
@@ -144,7 +144,7 @@ export function ModalContent({
   onMouseDown,
   'aria-label': ariaLabel,
   ...props
-}: ModalContentProps) {
+}: ModalContentProps) => {
   const { open, setOpen, titleId, descriptionId, closeOnEscape, closeOnBackdrop } = useModalContext();
   const [mounted, setMounted] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -233,58 +233,58 @@ export function ModalContent({
     </div>,
     document.body
   );
-}
+};
 
-export function ModalHeader({ children, className = '', ...props }: ModalSectionProps) {
+export const ModalHeader = ({ children, className = '', ...props }: ModalSectionProps) => {
   return (
     <div className={joinClasses(styles.header, className)} {...props}>
       {children}
     </div>
   );
-}
+};
 
-export function ModalTitle({ as: Heading = 'h2', children, className = '', ...props }: ModalTitleProps) {
+export const ModalTitle = ({ as: Heading = 'h2', children, className = '', ...props }: ModalTitleProps) => {
   const { titleId } = useModalContext();
   return (
     <Heading {...props} id={titleId} className={joinClasses(styles.title, className)}>
       {children}
     </Heading>
   );
-}
+};
 
-export function ModalDescription({ children, className = '', ...props }: ModalDescriptionProps) {
+export const ModalDescription = ({ children, className = '', ...props }: ModalDescriptionProps) => {
   const { descriptionId } = useModalContext();
   return (
     <p {...props} id={descriptionId} className={joinClasses(styles.description, className)}>
       {children}
     </p>
   );
-}
+};
 
-export function ModalBody({ children, className = '', ...props }: ModalSectionProps) {
+export const ModalBody = ({ children, className = '', ...props }: ModalSectionProps) => {
   return (
     <div className={joinClasses(styles.body, className)} {...props}>
       {children}
     </div>
   );
-}
+};
 
-export function ModalFooter({ children, className = '', ...props }: ModalSectionProps) {
+export const ModalFooter = ({ children, className = '', ...props }: ModalSectionProps) => {
   return (
     <div className={joinClasses(styles.footer, className)} {...props}>
       {children}
     </div>
   );
-}
+};
 
-export function ModalClose({
+export const ModalClose = ({
   children,
   variant = 'secondary',
   className = '',
   type = 'button',
   onClick,
   ...props
-}: ModalCloseProps) {
+}: ModalCloseProps) => {
   const { setOpen } = useModalContext();
   const closeClass =
     children === undefined ? styles.close : joinClasses(styles.actionClose, styles[`action${variant}`]);
@@ -305,4 +305,4 @@ export function ModalClose({
       )}
     </button>
   );
-}
+};

@@ -17,6 +17,6 @@ export interface TooltipTriggerProps extends ButtonHTMLAttributes<HTMLButtonElem
 export interface TooltipLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
     children?: ReactNode;
 }
-export declare function Tooltip({ content, placement, trigger, open, defaultOpen, onOpenChange, interactive, children, className, ...props }: TooltipProps): import("react").JSX.Element;
-export declare function TooltipTrigger({ children, className, type, onClick, onMouseEnter, onMouseLeave, onFocus, onBlur, ...props }: TooltipTriggerProps): import("react").JSX.Element;
-export declare function TooltipLink({ children, className, onClick, onMouseEnter, onMouseLeave, onFocus, onBlur, ...props }: TooltipLinkProps): import("react").JSX.Element;
+export declare const Tooltip: ({ content, placement, trigger, open, defaultOpen, onOpenChange, interactive, children, className, ...props }: TooltipProps) => import("react").JSX.Element;
+export declare const TooltipTrigger: ({ children, className, type, onClick, onMouseEnter, onMouseLeave, onFocus, onBlur, ...props }: TooltipTriggerProps) => import("react").JSX.Element;
+export declare const TooltipLink: ({ children, className, onClick, onMouseEnter, onMouseLeave, onFocus, onBlur, ...props }: TooltipLinkProps) => import("react").JSX.Element;

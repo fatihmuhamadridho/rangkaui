@@ -41,7 +41,7 @@ function useCollapseContext() {
   return context;
 }
 
-export function Collapse({
+export const Collapse = ({
   open,
   defaultOpen = false,
   onOpenChange,
@@ -50,7 +50,7 @@ export function Collapse({
   children,
   className = '',
   ...props
-}: CollapseProps) {
+}: CollapseProps) => {
   const generatedId = useId().replace(/:/g, '');
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const isControlled = open !== undefined;
@@ -73,15 +73,15 @@ export function Collapse({
       </div>
     </CollapseContext.Provider>
   );
-}
+};
 
-export function CollapseTrigger({
+export const CollapseTrigger = ({
   children,
   className = '',
   type = 'button',
   onClick,
   ...props
-}: CollapseTriggerProps) {
+}: CollapseTriggerProps) => {
   const { panelId, open, toggle } = useCollapseContext();
   return (
     <button
@@ -98,9 +98,9 @@ export function CollapseTrigger({
       {children}
     </button>
   );
-}
+};
 
-export function CollapsePanel({ children, className = '', ...props }: CollapsePanelProps) {
+export const CollapsePanel = ({ children, className = '', ...props }: CollapsePanelProps) => {
   const { panelId, open } = useCollapseContext();
   return (
     <div
@@ -115,4 +115,4 @@ export function CollapsePanel({ children, className = '', ...props }: CollapsePa
       </div>
     </div>
   );
-}
+};

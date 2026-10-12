@@ -24,15 +24,15 @@ const variants: Record<AlertVariant, string> = {
   dark: styles.dark,
 };
 
-function CloseIcon() {
+const CloseIcon = () => {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16" className={styles.closeIcon}>
       <path d="m3 3 10 10M13 3 3 13" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.5" />
     </svg>
   );
-}
+};
 
-export function Alert({
+export const Alert = ({
   variant = 'primary',
   dismissible = false,
   onClose,
@@ -42,7 +42,7 @@ export function Alert({
   className = '',
   role = 'alert',
   ...props
-}: AlertProps) {
+}: AlertProps) => {
   const [isVisible, setIsVisible] = useState(true);
 
   if (!isVisible) return null;
@@ -76,4 +76,4 @@ export function Alert({
       )}
     </div>
   );
-}
+};

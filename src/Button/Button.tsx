@@ -66,7 +66,7 @@ const variants: Record<ButtonVariant, string> = {
   'outline-dark': styles.outlineDark,
 };
 
-export function Button({
+export const Button = ({
   variant = 'primary',
   size = 'medium',
   iconOnly = false,
@@ -74,7 +74,7 @@ export function Button({
   type = 'button',
   children = 'Button Title',
   ...props
-}: ButtonProps) {
+}: ButtonProps) => {
   return (
     <button
       type={type}
@@ -84,4 +84,4 @@ export function Button({
       {children}
     </button>
   );
-}
+};

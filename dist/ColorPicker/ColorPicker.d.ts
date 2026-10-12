@@ -13,4 +13,4 @@ export interface ColorPickerProps extends Omit<HTMLAttributes<HTMLDivElement>, '
     disabled?: boolean;
     showAlpha?: boolean;
 }
-export declare function ColorPicker({ value, defaultValue, onChange, label, disabled, showAlpha, className, ...props }: ColorPickerProps): import("react").JSX.Element;
+export declare const ColorPicker: ({ value, defaultValue, onChange, label, disabled, showAlpha, className, ...props }: ColorPickerProps) => import("react").JSX.Element;

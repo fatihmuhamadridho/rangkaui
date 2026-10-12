@@ -6,4 +6,4 @@ export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
     rounded?: boolean;
     shadow?: boolean;
 }
-export declare function Box({ children, className, padded, bordered, rounded, shadow, ...props }: BoxProps): import("react").JSX.Element;
+export declare const Box: ({ children, className, padded, bordered, rounded, shadow, ...props }: BoxProps) => import("react").JSX.Element;

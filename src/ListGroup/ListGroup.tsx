@@ -47,7 +47,7 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function ListGroup({
+export const ListGroup = ({
   as: Element = 'ul',
   flush = false,
   horizontal = false,
@@ -55,7 +55,7 @@ export function ListGroup({
   children,
   className = '',
   ...props
-}: ListGroupProps) {
+}: ListGroupProps) => {
   const semanticList = Element === 'ul' || Element === 'ol';
   const classes = joinClasses(
     styles.listGroup,
@@ -73,9 +73,9 @@ export function ListGroup({
       </Element>
     </ListGroupContext.Provider>
   );
-}
+};
 
-export function ListGroupItem({
+export const ListGroupItem = ({
   href,
   target,
   rel,
@@ -89,7 +89,7 @@ export function ListGroupItem({
   className = '',
   onClick,
   ...props
-}: ListGroupItemProps) {
+}: ListGroupItemProps) => {
   const { semanticList } = useContext(ListGroupContext);
   const itemClasses = joinClasses(
     styles.item,
@@ -190,4 +190,4 @@ export function ListGroupItem({
       {content}
     </div>
   );
-}
+};

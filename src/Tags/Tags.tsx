@@ -24,7 +24,7 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function Tag({
+export const Tag = ({
   children,
   icon = <TagIcon />,
   closable = false,
@@ -34,7 +34,7 @@ export function Tag({
   variant = 'default',
   className = '',
   ...props
-}: TagProps) {
+}: TagProps) => {
   return (
     <span {...props} className={joinClasses(styles.tag, styles[size], styles[variant], className)}>
       {icon !== null && (
@@ -56,17 +56,17 @@ export function Tag({
       )}
     </span>
   );
-}
+};
 
-export function Tags({ children, gap = 'medium', className = '', role = 'list', ...props }: TagsProps) {
+export const Tags = ({ children, gap = 'medium', className = '', role = 'list', ...props }: TagsProps) => {
   return (
     <div {...props} className={joinClasses(styles.tags, styles[`gap${gap}`], className)} role={role}>
       {children}
     </div>
   );
-}
+};
 
-function TagIcon() {
+const TagIcon = () => {
   return (
     <svg viewBox="0 0 16 16">
       <path
@@ -79,12 +79,12 @@ function TagIcon() {
       <circle cx="5.1" cy="5.1" r=".85" fill="currentColor" />
     </svg>
   );
-}
+};
 
-function CloseIcon() {
+const CloseIcon = () => {
   return (
     <svg viewBox="0 0 16 16">
       <path d="m3 3 10 10M13 3 3 13" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.4" />
     </svg>
   );
-}
+};

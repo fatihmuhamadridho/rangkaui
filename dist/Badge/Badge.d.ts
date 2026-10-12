@@ -8,4 +8,4 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
     dot?: boolean;
     children?: ReactNode;
 }
-export declare function Badge({ variant, pill, position, dot, className, children, 'aria-label': ariaLabel, ...props }: BadgeProps): import("react").JSX.Element;
+export declare const Badge: ({ variant, pill, position, dot, className, children, "aria-label": ariaLabel, ...props }: BadgeProps) => import("react").JSX.Element;

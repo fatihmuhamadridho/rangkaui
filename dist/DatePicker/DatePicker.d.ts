@@ -20,4 +20,4 @@ export interface DatePickerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'o
     weekStartsOn?: 0 | 1;
     closeOnSelect?: boolean;
 }
-export declare function DatePicker({ mode, value, defaultValue, onChange, placeholder, theme, disabled, monthsToShow, showTime, minDate, maxDate, weekStartsOn, closeOnSelect, className, ...props }: DatePickerProps): import("react").JSX.Element;
+export declare const DatePicker: ({ mode, value, defaultValue, onChange, placeholder, theme, disabled, monthsToShow, showTime, minDate, maxDate, weekStartsOn, closeOnSelect, className, ...props }: DatePickerProps) => import("react").JSX.Element;

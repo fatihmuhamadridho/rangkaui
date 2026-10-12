@@ -49,7 +49,7 @@ function getInitials(name?: string) {
     .join('');
 }
 
-export function Avatar({
+export const Avatar = ({
   src,
   alt,
   name,
@@ -65,7 +65,7 @@ export function Avatar({
   className = '',
   style,
   ...props
-}: AvatarProps) {
+}: AvatarProps) => {
   const [imageFailed, setImageFailed] = useState(false);
   const customSize = typeof size === 'number' ? `${size}px` : undefined;
   const displayInitials = initials ?? getInitials(name);
@@ -108,9 +108,9 @@ export function Avatar({
       {badge !== undefined && <span className={styles.badge}>{badge}</span>}
     </span>
   );
-}
+};
 
-export function AvatarGroup({ children, max, size, className = '', ...props }: AvatarGroupProps) {
+export const AvatarGroup = ({ children, max, size, className = '', ...props }: AvatarGroupProps) => {
   const items = Array.isArray(children) ? children : [children];
   const visibleItems = max === undefined ? items : items.slice(0, max);
   const remaining = max === undefined ? 0 : Math.max(0, items.length - max);
@@ -134,9 +134,9 @@ export function AvatarGroup({ children, max, size, className = '', ...props }: A
       )}
     </div>
   );
-}
+};
 
-function PersonIcon() {
+const PersonIcon = () => {
   return (
     <svg className={styles.person} viewBox="0 0 24 24" aria-hidden="true">
       <circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
@@ -149,4 +149,4 @@ function PersonIcon() {
       />
     </svg>
   );
-}
+};

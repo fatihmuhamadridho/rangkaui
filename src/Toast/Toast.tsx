@@ -75,7 +75,7 @@ function useToastContext() {
   return context;
 }
 
-export function Toast({
+export const Toast = ({
   title,
   variant = 'light',
   autohide = false,
@@ -88,7 +88,7 @@ export function Toast({
   children,
   className = '',
   ...props
-}: ToastProps) {
+}: ToastProps) => {
   const generatedId = useId().replace(/:/g, '');
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const isControlled = open !== undefined;
@@ -129,9 +129,9 @@ export function Toast({
       </div>
     </ToastContext.Provider>
   );
-}
+};
 
-export function ToastClose({ children, className = '', onClick, type = 'button', ...props }: ToastCloseProps) {
+export const ToastClose = ({ children, className = '', onClick, type = 'button', ...props }: ToastCloseProps) => {
   const { close } = useToastContext();
   return (
     <button
@@ -150,15 +150,15 @@ export function ToastClose({ children, className = '', onClick, type = 'button',
       )}
     </button>
   );
-}
+};
 
-export function ToastContainer({
+export const ToastContainer = ({
   placement = 'top-end',
   stacked = false,
   children,
   className = '',
   ...props
-}: ToastContainerProps) {
+}: ToastContainerProps) => {
   return (
     <div
       {...props}
@@ -168,4 +168,4 @@ export function ToastContainer({
       {children}
     </div>
   );
-}
+};

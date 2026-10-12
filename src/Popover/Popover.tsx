@@ -56,7 +56,7 @@ function usePopoverContext() {
   return context;
 }
 
-export function Popover({
+export const Popover = ({
   open,
   defaultOpen = false,
   onOpenChange,
@@ -66,7 +66,7 @@ export function Popover({
   className = '',
   onKeyDown,
   ...props
-}: PopoverProps) {
+}: PopoverProps) => {
   const generatedId = useId().replace(/:/g, '');
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -129,9 +129,9 @@ export function Popover({
       </div>
     </PopoverContext.Provider>
   );
-}
+};
 
-export function PopoverTrigger({
+export const PopoverTrigger = ({
   children = 'Toggle popover',
   className = '',
   type = 'button',
@@ -141,7 +141,7 @@ export function PopoverTrigger({
   onFocus,
   onBlur,
   ...props
-}: PopoverTriggerProps) {
+}: PopoverTriggerProps) => {
   const { open, setOpen, toggle, contentId, triggerRef, contentRef, triggerMode } = usePopoverContext();
 
   return (
@@ -178,16 +178,16 @@ export function PopoverTrigger({
       {children}
     </button>
   );
-}
+};
 
-export function PopoverContent({
+export const PopoverContent = ({
   title,
   children,
   className = '',
   onMouseEnter,
   onMouseLeave,
   ...props
-}: PopoverContentProps) {
+}: PopoverContentProps) => {
   const { open, setOpen, contentId, titleId, contentRef, triggerMode } = usePopoverContext();
   if (!open) return null;
 
@@ -217,4 +217,4 @@ export function PopoverContent({
       <div className={styles.body}>{children}</div>
     </div>
   );
-}
+};

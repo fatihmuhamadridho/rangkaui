@@ -8,4 +8,4 @@ export interface DividerProps extends HTMLAttributes<HTMLDivElement> {
     align?: DividerAlign;
     children?: ReactNode;
 }
-export declare function Divider({ orientation, variant, align, children, className, ...props }: DividerProps): import("react").JSX.Element;
+export declare const Divider: ({ orientation, variant, align, children, className, ...props }: DividerProps) => import("react").JSX.Element;

@@ -31,7 +31,7 @@ function getPageItems(currentPage: number, totalPages: number): PageItem[] {
   return items;
 }
 
-function Chevron({ direction }: { direction: 'previous' | 'next' }) {
+const Chevron = ({ direction }: { direction: 'previous' | 'next' }) => {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16" className={styles.chevron}>
       <path
@@ -44,9 +44,9 @@ function Chevron({ direction }: { direction: 'previous' | 'next' }) {
       />
     </svg>
   );
-}
+};
 
-export function Pagination({
+export const Pagination = ({
   currentPage,
   totalItems,
   pageSize,
@@ -54,7 +54,7 @@ export function Pagination({
   onPageSizeChange,
   pageSizeOptions = [10, 20, 50, 100],
   className = '',
-}: PaginationProps) {
+}: PaginationProps) => {
   const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
   const page = Math.min(Math.max(currentPage, 1), totalPages);
   const [pageInput, setPageInput] = useState('');
@@ -146,4 +146,4 @@ export function Pagination({
       </div>
     </nav>
   );
-}
+};

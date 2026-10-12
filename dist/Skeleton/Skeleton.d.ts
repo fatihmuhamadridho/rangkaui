@@ -10,4 +10,4 @@ export interface SkeletonProps extends HTMLAttributes<HTMLSpanElement> {
     as?: 'span' | 'div';
     children?: ReactNode;
 }
-export declare function Skeleton({ animation, size, color, width, as: Element, className, style, 'aria-hidden': ariaHidden, ...props }: SkeletonProps): import("react").JSX.Element;
+export declare const Skeleton: ({ animation, size, color, width, as: Element, className, style, "aria-hidden": ariaHidden, ...props }: SkeletonProps) => import("react").JSX.Element;

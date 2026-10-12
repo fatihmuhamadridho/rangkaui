@@ -18,6 +18,6 @@ export interface ProgressStackProps extends HTMLAttributes<HTMLDivElement> {
 }
 export interface ProgressSegmentProps extends Omit<ProgressProps, 'width'> {
 }
-export declare function Progress({ value, min, max, variant, striped, animated, label, showValue, children, className, style, 'aria-label': ariaLabel, ...props }: ProgressProps): import("react").JSX.Element;
-export declare function ProgressSegment({ value, min, max, variant, striped, animated, label, showValue, children, className, style, 'aria-label': ariaLabel, ...props }: ProgressSegmentProps): import("react").JSX.Element;
-export declare function ProgressStack({ label, height, children, className, style, ...props }: ProgressStackProps): import("react").JSX.Element;
+export declare const Progress: ({ value, min, max, variant, striped, animated, label, showValue, children, className, style, "aria-label": ariaLabel, ...props }: ProgressProps) => import("react").JSX.Element;
+export declare const ProgressSegment: ({ value, min, max, variant, striped, animated, label, showValue, children, className, style, "aria-label": ariaLabel, ...props }: ProgressSegmentProps) => import("react").JSX.Element;
+export declare const ProgressStack: ({ label, height, children, className, style, ...props }: ProgressStackProps) => import("react").JSX.Element;

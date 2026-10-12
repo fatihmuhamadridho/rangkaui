@@ -18,4 +18,4 @@ export interface CarouselProps extends Omit<HTMLAttributes<HTMLDivElement>, 'def
     dark?: boolean;
     transitionDuration?: number;
 }
-export declare function Carousel({ slides, activeIndex, defaultActiveIndex, onSlideChange, showControls, showIndicators, interval, pauseOnHover, wrap, dark, transitionDuration, className, style, 'aria-label': ariaLabel, onMouseEnter, onMouseLeave, ...props }: CarouselProps): import("react").JSX.Element;
+export declare const Carousel: ({ slides, activeIndex, defaultActiveIndex, onSlideChange, showControls, showIndicators, interval, pauseOnHover, wrap, dark, transitionDuration, className, style, "aria-label": ariaLabel, onMouseEnter, onMouseLeave, ...props }: CarouselProps) => import("react").JSX.Element;

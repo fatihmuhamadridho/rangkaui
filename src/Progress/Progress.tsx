@@ -28,7 +28,7 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function Progress({
+export const Progress = ({
   value,
   min = 0,
   max = 100,
@@ -42,7 +42,7 @@ export function Progress({
   style,
   'aria-label': ariaLabel,
   ...props
-}: ProgressProps) {
+}: ProgressProps) => {
   const range = max - min;
   const percentage = range > 0 ? Math.min(100, Math.max(0, ((value - min) / range) * 100)) : 0;
   const displayLabel = children ?? label ?? (showValue ? `${Math.round(percentage)}%` : undefined);
@@ -68,9 +68,9 @@ export function Progress({
       </div>
     </div>
   );
-}
+};
 
-export function ProgressSegment({
+export const ProgressSegment = ({
   value,
   min = 0,
   max = 100,
@@ -84,7 +84,7 @@ export function ProgressSegment({
   style,
   'aria-label': ariaLabel,
   ...props
-}: ProgressSegmentProps) {
+}: ProgressSegmentProps) => {
   const range = max - min;
   const percentage = range > 0 ? Math.min(100, Math.max(0, ((value - min) / range) * 100)) : 0;
   const displayLabel = children ?? label ?? (showValue ? `${Math.round(percentage)}%` : undefined);
@@ -110,16 +110,16 @@ export function ProgressSegment({
       {displayLabel}
     </div>
   );
-}
+};
 
-export function ProgressStack({
+export const ProgressStack = ({
   label = 'Progress',
   height,
   children,
   className = '',
   style,
   ...props
-}: ProgressStackProps) {
+}: ProgressStackProps) => {
   const normalizedHeight = typeof height === 'number' ? `${height}px` : height;
 
   return (
@@ -133,4 +133,4 @@ export function ProgressStack({
       {children}
     </div>
   );
-}
+};

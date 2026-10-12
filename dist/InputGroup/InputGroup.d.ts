@@ -23,9 +23,9 @@ export interface InputGroupCheckProps extends Omit<InputHTMLAttributes<HTMLInput
     type?: 'checkbox' | 'radio';
     label?: ReactNode;
 }
-export declare function InputGroup({ size, rounding, wrap, children, className, role, 'aria-label': ariaLabel, ...props }: InputGroupProps): import("react").JSX.Element;
-export declare function InputGroupText({ children, className, ...props }: InputGroupTextProps): import("react").JSX.Element;
-export declare function InputGroupButton({ variant, children, className, type, ...props }: InputGroupButtonProps): import("react").JSX.Element;
-export declare function InputGroupInput({ className, ...props }: InputGroupInputProps): import("react").JSX.Element;
-export declare function InputGroupSelect({ children, className, ...props }: InputGroupSelectProps): import("react").JSX.Element;
-export declare function InputGroupCheck({ type, label, className, ...props }: InputGroupCheckProps): import("react").JSX.Element;
+export declare const InputGroup: ({ size, rounding, wrap, children, className, role, "aria-label": ariaLabel, ...props }: InputGroupProps) => import("react").JSX.Element;
+export declare const InputGroupText: ({ children, className, ...props }: InputGroupTextProps) => import("react").JSX.Element;
+export declare const InputGroupButton: ({ variant, children, className, type, ...props }: InputGroupButtonProps) => import("react").JSX.Element;
+export declare const InputGroupInput: ({ className, ...props }: InputGroupInputProps) => import("react").JSX.Element;
+export declare const InputGroupSelect: ({ children, className, ...props }: InputGroupSelectProps) => import("react").JSX.Element;
+export declare const InputGroupCheck: ({ type, label, className, ...props }: InputGroupCheckProps) => import("react").JSX.Element;

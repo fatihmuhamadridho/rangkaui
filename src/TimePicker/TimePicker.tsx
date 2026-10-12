@@ -46,7 +46,7 @@ function formatTime(value: ClockTime, useSeconds: boolean, hour12: boolean) {
   return `${pad(hour)}:${pad(value.minute)}${useSeconds ? `:${pad(value.second)}` : ''}${hour12 ? ` ${value.meridiem}` : ''}`;
 }
 
-export function TimePicker({
+export const TimePicker = ({
   mode = 'single',
   value,
   defaultValue = '',
@@ -60,7 +60,7 @@ export function TimePicker({
   placeholder,
   className = '',
   ...props
-}: TimePickerProps) {
+}: TimePickerProps) => {
   const id = useId().replace(/:/g, '');
   const rootRef = useRef<HTMLDivElement>(null);
   const controlled = value !== undefined;
@@ -228,13 +228,13 @@ export function TimePicker({
       )}
     </div>
   );
-}
+};
 
-function ClockIcon() {
+const ClockIcon = () => {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16">
       <circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" />
       <path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" strokeLinecap="round" />
     </svg>
   );
-}
+};

@@ -7,4 +7,4 @@ export interface PaginationProps {
     pageSizeOptions?: number[];
     className?: string;
 }
-export declare function Pagination({ currentPage, totalItems, pageSize, onPageChange, onPageSizeChange, pageSizeOptions, className, }: PaginationProps): import("react").JSX.Element;
+export declare const Pagination: ({ currentPage, totalItems, pageSize, onPageChange, onPageSizeChange, pageSizeOptions, className, }: PaginationProps) => import("react").JSX.Element;

@@ -98,7 +98,7 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function Dropdown({
+export const Dropdown = ({
   open,
   defaultOpen = false,
   onOpenChange,
@@ -110,7 +110,7 @@ export function Dropdown({
   className = '',
   onKeyDown,
   ...props
-}: DropdownProps) {
+}: DropdownProps) => {
   const generatedId = useId().replace(/:/g, '');
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -208,9 +208,9 @@ export function Dropdown({
       </div>
     </DropdownContext.Provider>
   );
-}
+};
 
-export function DropdownToggle({
+export const DropdownToggle = ({
   split = false,
   variant = 'primary',
   children = split ? null : 'Toggle dropdown',
@@ -218,7 +218,7 @@ export function DropdownToggle({
   type = 'button',
   onClick,
   ...props
-}: DropdownToggleProps) {
+}: DropdownToggleProps) => {
   const { menuId, open, toggle, triggerRef } = useDropdownContext();
   return (
     <button
@@ -239,9 +239,16 @@ export function DropdownToggle({
       {split && <span className={styles.srOnly}>Toggle dropdown menu</span>}
     </button>
   );
-}
+};
 
-export function DropdownMenu({ align, dark = false, children, className = '', onClick, ...props }: DropdownMenuProps) {
+export const DropdownMenu = ({
+  align,
+  dark = false,
+  children,
+  className = '',
+  onClick,
+  ...props
+}: DropdownMenuProps) => {
   const { menuId, open, autoClose, dark: rootDark, menuRef, setOpen } = useDropdownContext();
   return (
     <div
@@ -264,9 +271,9 @@ export function DropdownMenu({ align, dark = false, children, className = '', on
       {children}
     </div>
   );
-}
+};
 
-export function DropdownItem({
+export const DropdownItem = ({
   href,
   active = false,
   disabled = false,
@@ -275,7 +282,7 @@ export function DropdownItem({
   children,
   className = '',
   ...props
-}: DropdownItemProps) {
+}: DropdownItemProps) => {
   const classes = joinClasses(styles.item, active && styles.active, disabled && styles.disabled, className);
   const handleClick = (event: ReactMouseEvent<HTMLElement>) => {
     onClick?.(event);
@@ -320,16 +327,16 @@ export function DropdownItem({
       {children}
     </button>
   );
-}
+};
 
-export function DropdownHeader({ children, className = '', ...props }: HTMLAttributes<HTMLDivElement>) {
+export const DropdownHeader = ({ children, className = '', ...props }: HTMLAttributes<HTMLDivElement>) => {
   return (
     <div className={joinClasses(styles.header, className)} role="presentation" {...props}>
       {children}
     </div>
   );
-}
+};
 
-export function DropdownDivider({ className = '', ...props }: HTMLAttributes<HTMLHRElement>) {
+export const DropdownDivider = ({ className = '', ...props }: HTMLAttributes<HTMLHRElement>) => {
   return <hr className={joinClasses(styles.divider, className)} role="separator" {...props} />;
-}
+};

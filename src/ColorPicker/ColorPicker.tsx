@@ -110,7 +110,7 @@ function fromHsv({ h, s, v, a }: HSVColor): RGBAColor {
   };
 }
 
-export function ColorPicker({
+export const ColorPicker = ({
   value,
   defaultValue = '#1708FF',
   onChange,
@@ -119,7 +119,7 @@ export function ColorPicker({
   showAlpha = true,
   className = '',
   ...props
-}: ColorPickerProps) {
+}: ColorPickerProps) => {
   const generatedId = useId().replace(/:/g, '');
   const rootRef = useRef<HTMLDivElement>(null);
   const [internalColor, setInternalColor] = useState(() => parseColor(defaultValue) ?? { r: 23, g: 8, b: 255, a: 100 });
@@ -314,4 +314,4 @@ export function ColorPicker({
       )}
     </div>
   );
-}
+};

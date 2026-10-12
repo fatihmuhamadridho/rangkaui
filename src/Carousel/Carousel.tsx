@@ -23,7 +23,7 @@ export interface CarouselProps extends Omit<HTMLAttributes<HTMLDivElement>, 'def
   transitionDuration?: number;
 }
 
-function Arrow({ direction }: { direction: 'previous' | 'next' }) {
+const Arrow = ({ direction }: { direction: 'previous' | 'next' }) => {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16" className={styles.arrow}>
       <path
@@ -36,9 +36,9 @@ function Arrow({ direction }: { direction: 'previous' | 'next' }) {
       />
     </svg>
   );
-}
+};
 
-export function Carousel({
+export const Carousel = ({
   slides,
   activeIndex,
   defaultActiveIndex = 0,
@@ -56,7 +56,7 @@ export function Carousel({
   onMouseEnter,
   onMouseLeave,
   ...props
-}: CarouselProps) {
+}: CarouselProps) => {
   const [internalIndex, setInternalIndex] = useState(defaultActiveIndex);
   const [paused, setPaused] = useState(false);
   const isControlled = activeIndex !== undefined;
@@ -162,4 +162,4 @@ export function Carousel({
       )}
     </div>
   );
-}
+};

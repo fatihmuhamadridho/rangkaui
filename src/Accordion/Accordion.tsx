@@ -24,7 +24,7 @@ function asList(value?: string | string[]): string[] {
   return Array.isArray(value) ? value : [value];
 }
 
-export function Accordion({
+export const Accordion = ({
   items,
   defaultOpen,
   openItems,
@@ -34,7 +34,7 @@ export function Accordion({
   headingLevel = 3,
   className = '',
   ...props
-}: AccordionProps) {
+}: AccordionProps) => {
   const [internalOpenItems, setInternalOpenItems] = useState(() => asList(defaultOpen));
   const isControlled = openItems !== undefined;
   const selectedItems = isControlled ? openItems : internalOpenItems;
@@ -94,4 +94,4 @@ export function Accordion({
       })}
     </div>
   );
-}
+};

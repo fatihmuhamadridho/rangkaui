@@ -21,6 +21,6 @@ export interface ToastContainerProps extends HTMLAttributes<HTMLDivElement> {
 export interface ToastCloseProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode;
 }
-export declare function Toast({ title, variant, autohide, delay, open, defaultOpen, onOpenChange, onClose, closeButton, children, className, ...props }: ToastProps): import("react").JSX.Element | null;
-export declare function ToastClose({ children, className, onClick, type, ...props }: ToastCloseProps): import("react").JSX.Element;
-export declare function ToastContainer({ placement, stacked, children, className, ...props }: ToastContainerProps): import("react").JSX.Element;
+export declare const Toast: ({ title, variant, autohide, delay, open, defaultOpen, onOpenChange, onClose, closeButton, children, className, ...props }: ToastProps) => import("react").JSX.Element | null;
+export declare const ToastClose: ({ children, className, onClick, type, ...props }: ToastCloseProps) => import("react").JSX.Element;
+export declare const ToastContainer: ({ placement, stacked, children, className, ...props }: ToastContainerProps) => import("react").JSX.Element;

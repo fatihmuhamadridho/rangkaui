@@ -13,7 +13,7 @@ export interface SliderProps extends Omit<
   label?: string;
 }
 
-export function Slider({
+export const Slider = ({
   value,
   defaultValue = 0,
   onValueChange,
@@ -22,7 +22,7 @@ export function Slider({
   disabled = false,
   className = '',
   ...props
-}: SliderProps) {
+}: SliderProps) => {
   const controlled = value !== undefined;
   const [internalValue, setInternalValue] = useState(defaultValue);
   const currentValue = controlled ? value : internalValue;
@@ -49,4 +49,4 @@ export function Slider({
       {showValue && <output className={styles.value}>{currentValue}</output>}
     </div>
   );
-}
+};

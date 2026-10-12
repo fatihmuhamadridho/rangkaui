@@ -10,7 +10,7 @@ export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
   shadow?: boolean;
 }
 
-export function Box({
+export const Box = ({
   children,
   className = '',
   padded = false,
@@ -18,7 +18,7 @@ export function Box({
   rounded = false,
   shadow = false,
   ...props
-}: BoxProps) {
+}: BoxProps) => {
   const classes = [
     styles.box,
     padded && styles.padded,
@@ -35,4 +35,4 @@ export function Box({
       {children}
     </div>
   );
-}
+};

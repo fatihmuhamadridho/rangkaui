@@ -13,6 +13,6 @@ export interface CollapseTriggerProps extends ButtonHTMLAttributes<HTMLButtonEle
 export interface CollapsePanelProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode;
 }
-export declare function Collapse({ open, defaultOpen, onOpenChange, horizontal, panelId, children, className, ...props }: CollapseProps): import("react").JSX.Element;
-export declare function CollapseTrigger({ children, className, type, onClick, ...props }: CollapseTriggerProps): import("react").JSX.Element;
-export declare function CollapsePanel({ children, className, ...props }: CollapsePanelProps): import("react").JSX.Element;
+export declare const Collapse: ({ open, defaultOpen, onOpenChange, horizontal, panelId, children, className, ...props }: CollapseProps) => import("react").JSX.Element;
+export declare const CollapseTrigger: ({ children, className, type, onClick, ...props }: CollapseTriggerProps) => import("react").JSX.Element;
+export declare const CollapsePanel: ({ children, className, ...props }: CollapsePanelProps) => import("react").JSX.Element;

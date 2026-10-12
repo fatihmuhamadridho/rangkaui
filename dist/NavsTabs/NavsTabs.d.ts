@@ -24,7 +24,7 @@ export interface NavsTabsPanelProps extends HTMLAttributes<HTMLDivElement> {
     tabKey: string;
     children?: ReactNode;
 }
-export declare function NavsTabs({ defaultActiveKey, activeKey, onChange, variant, orientation, justified, fill, children, className, ...props }: NavsTabsProps): import("react").JSX.Element;
-export declare function NavsTabsList({ label, children, className, ...props }: NavsTabsListProps): import("react").JSX.Element;
-export declare function NavsTabsTab({ tabKey, disabled, children, className, onClick, onFocus, ...props }: NavsTabsTabProps): import("react").JSX.Element;
-export declare function NavsTabsPanel({ tabKey, children, className, ...props }: NavsTabsPanelProps): import("react").JSX.Element;
+export declare const NavsTabs: ({ defaultActiveKey, activeKey, onChange, variant, orientation, justified, fill, children, className, ...props }: NavsTabsProps) => import("react").JSX.Element;
+export declare const NavsTabsList: ({ label, children, className, ...props }: NavsTabsListProps) => import("react").JSX.Element;
+export declare const NavsTabsTab: ({ tabKey, disabled, children, className, onClick, onFocus, ...props }: NavsTabsTabProps) => import("react").JSX.Element;
+export declare const NavsTabsPanel: ({ tabKey, children, className, ...props }: NavsTabsPanelProps) => import("react").JSX.Element;

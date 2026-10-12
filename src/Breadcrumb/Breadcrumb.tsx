@@ -13,14 +13,14 @@ export interface BreadcrumbProps extends HTMLAttributes<HTMLElement> {
   divider?: string;
 }
 
-export function Breadcrumb({
+export const Breadcrumb = ({
   items,
   divider = '/',
   className = '',
   'aria-label': ariaLabel = 'Breadcrumb',
   style,
   ...props
-}: BreadcrumbProps) {
+}: BreadcrumbProps) => {
   const breadcrumbStyle = {
     ...style,
     '--breadcrumb-divider': divider
@@ -54,4 +54,4 @@ export function Breadcrumb({
       </ol>
     </nav>
   );
-}
+};

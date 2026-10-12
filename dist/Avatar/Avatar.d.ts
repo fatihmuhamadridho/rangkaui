@@ -22,5 +22,5 @@ export interface AvatarGroupProps extends HTMLAttributes<HTMLDivElement> {
     size?: AvatarSize;
     children?: ReactNode;
 }
-export declare function Avatar({ src, alt, name, initials, size, shape, variant, badge, dot, status, children, imageProps, className, style, ...props }: AvatarProps): import("react").JSX.Element;
-export declare function AvatarGroup({ children, max, size, className, ...props }: AvatarGroupProps): import("react").JSX.Element;
+export declare const Avatar: ({ src, alt, name, initials, size, shape, variant, badge, dot, status, children, imageProps, className, style, ...props }: AvatarProps) => import("react").JSX.Element;
+export declare const AvatarGroup: ({ children, max, size, className, ...props }: AvatarGroupProps) => import("react").JSX.Element;

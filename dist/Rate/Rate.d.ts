@@ -14,4 +14,4 @@ export interface RateProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChang
     size?: RateSize;
     label?: string;
 }
-export declare function Rate({ value, defaultValue, onChange, count, allowHalf, allowClear, readOnly, disabled, icon, size, label, className, ...props }: RateProps): import("react").JSX.Element;
+export declare const Rate: ({ value, defaultValue, onChange, count, allowHalf, allowClear, readOnly, disabled, icon, size, label, className, ...props }: RateProps) => import("react").JSX.Element;

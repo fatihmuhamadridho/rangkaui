@@ -14,5 +14,5 @@ export interface TagsProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode;
     gap?: 'small' | 'medium' | 'large';
 }
-export declare function Tag({ children, icon, closable, onClose, closeButtonProps, size, variant, className, ...props }: TagProps): import("react").JSX.Element;
-export declare function Tags({ children, gap, className, role, ...props }: TagsProps): import("react").JSX.Element;
+export declare const Tag: ({ children, icon, closable, onClose, closeButtonProps, size, variant, className, ...props }: TagProps) => import("react").JSX.Element;
+export declare const Tags: ({ children, gap, className, role, ...props }: TagsProps) => import("react").JSX.Element;

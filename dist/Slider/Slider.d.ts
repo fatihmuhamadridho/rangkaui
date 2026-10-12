@@ -6,4 +6,4 @@ export interface SliderProps extends Omit<InputHTMLAttributes<HTMLInputElement>,
     showValue?: boolean;
     label?: string;
 }
-export declare function Slider({ value, defaultValue, onValueChange, showValue, label, disabled, className, ...props }: SliderProps): import("react").JSX.Element;
+export declare const Slider: ({ value, defaultValue, onValueChange, showValue, label, disabled, className, ...props }: SliderProps) => import("react").JSX.Element;

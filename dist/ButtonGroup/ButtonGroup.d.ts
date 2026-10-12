@@ -22,6 +22,6 @@ export interface ButtonGroupToggleProps extends Omit<HTMLAttributes<HTMLDivEleme
     defaultValue?: string[];
     onValueChange?: (value: string[]) => void;
 }
-export declare function ButtonGroup({ children, orientation, size, className, role, 'aria-label': ariaLabel, ...props }: ButtonGroupProps): import("react").JSX.Element;
-export declare function ButtonToolbar({ children, className, role, 'aria-label': ariaLabel, ...props }: ButtonToolbarProps): import("react").JSX.Element;
-export declare function ButtonGroupToggle({ options, type, name, value, defaultValue, onValueChange, className, 'aria-label': ariaLabel, ...props }: ButtonGroupToggleProps): import("react").JSX.Element;
+export declare const ButtonGroup: ({ children, orientation, size, className, role, "aria-label": ariaLabel, ...props }: ButtonGroupProps) => import("react").JSX.Element;
+export declare const ButtonToolbar: ({ children, className, role, "aria-label": ariaLabel, ...props }: ButtonToolbarProps) => import("react").JSX.Element;
+export declare const ButtonGroupToggle: ({ options, type, name, value, defaultValue, onValueChange, className, "aria-label": ariaLabel, ...props }: ButtonGroupToggleProps) => import("react").JSX.Element;

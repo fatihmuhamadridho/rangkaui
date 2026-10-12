@@ -30,12 +30,12 @@ export interface NavbarLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement>
     disabled?: boolean;
     children?: ReactNode;
 }
-export declare function Navbar({ expand, theme, position, defaultExpanded, expanded, onExpandedChange, children, className, 'aria-label': ariaLabel, ...props }: NavbarProps): import("react").JSX.Element;
-export declare function NavbarBrand({ children, className, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>): import("react").JSX.Element;
-export declare function NavbarToggle({ children, className, type, onClick, ...props }: NavbarToggleProps): import("react").JSX.Element;
-export declare function NavbarCollapse({ children, className, ...props }: NavbarCollapseProps): import("react").JSX.Element;
-export declare function NavbarNav({ align, children, className, ...props }: NavbarNavProps): import("react").JSX.Element;
-export declare function NavbarItem({ children, className, ...props }: HTMLAttributes<HTMLLIElement>): import("react").JSX.Element;
-export declare function NavbarLink({ active, disabled, children, className, onClick, ...props }: NavbarLinkProps): import("react").JSX.Element;
-export declare function NavbarText({ children, className, ...props }: HTMLAttributes<HTMLSpanElement>): import("react").JSX.Element;
-export declare function NavbarContainer({ fluid, children, className, ...props }: NavbarContainerProps): import("react").JSX.Element;
+export declare const Navbar: ({ expand, theme, position, defaultExpanded, expanded, onExpandedChange, children, className, "aria-label": ariaLabel, ...props }: NavbarProps) => import("react").JSX.Element;
+export declare const NavbarBrand: ({ children, className, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => import("react").JSX.Element;
+export declare const NavbarToggle: ({ children, className, type, onClick, ...props }: NavbarToggleProps) => import("react").JSX.Element;
+export declare const NavbarCollapse: ({ children, className, ...props }: NavbarCollapseProps) => import("react").JSX.Element;
+export declare const NavbarNav: ({ align, children, className, ...props }: NavbarNavProps) => import("react").JSX.Element;
+export declare const NavbarItem: ({ children, className, ...props }: HTMLAttributes<HTMLLIElement>) => import("react").JSX.Element;
+export declare const NavbarLink: ({ active, disabled, children, className, onClick, ...props }: NavbarLinkProps) => import("react").JSX.Element;
+export declare const NavbarText: ({ children, className, ...props }: HTMLAttributes<HTMLSpanElement>) => import("react").JSX.Element;
+export declare const NavbarContainer: ({ fluid, children, className, ...props }: NavbarContainerProps) => import("react").JSX.Element;

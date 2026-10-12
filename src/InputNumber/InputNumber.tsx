@@ -22,7 +22,7 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function InputNumber({
+export const InputNumber = ({
   value,
   defaultValue = '',
   onValueChange,
@@ -40,7 +40,7 @@ export function InputNumber({
   onBlur,
   onKeyDown,
   ...props
-}: InputNumberProps) {
+}: InputNumberProps) => {
   const controlled = value !== undefined;
   const [internalValue, setInternalValue] = useState<string>(String(defaultValue));
   const currentValue = controlled ? String(value) : internalValue;
@@ -96,13 +96,13 @@ export function InputNumber({
       {suffix !== undefined && <span className={styles.addon}>{suffix}</span>}
     </div>
   );
-}
+};
 
-function ClearIcon() {
+const ClearIcon = () => {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16">
       <circle cx="8" cy="8" r="6" fill="currentColor" />
       <path d="m6 6 4 4m0-4-4 4" fill="none" stroke="white" strokeLinecap="round" strokeWidth="1.5" />
     </svg>
   );
-}
+};

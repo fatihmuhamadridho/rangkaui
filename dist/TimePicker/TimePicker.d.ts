@@ -17,4 +17,4 @@ export interface TimePickerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'o
     secondStep?: number;
     placeholder?: string;
 }
-export declare function TimePicker({ mode, value, defaultValue, onChange, theme, disabled, useSeconds, hour12, minuteStep, secondStep, placeholder, className, ...props }: TimePickerProps): import("react").JSX.Element;
+export declare const TimePicker: ({ mode, value, defaultValue, onChange, theme, disabled, useSeconds, hour12, minuteStep, secondStep, placeholder, className, ...props }: TimePickerProps) => import("react").JSX.Element;

@@ -63,7 +63,7 @@ function useNavsTabs() {
   return context;
 }
 
-export function NavsTabs({
+export const NavsTabs = ({
   defaultActiveKey,
   activeKey,
   onChange,
@@ -74,7 +74,7 @@ export function NavsTabs({
   children,
   className = '',
   ...props
-}: NavsTabsProps) {
+}: NavsTabsProps) => {
   const generatedId = useId().replace(/:/g, '');
   const [internalKey, setInternalKey] = useState(defaultActiveKey ?? '');
   const [keys, setKeys] = useState<string[]>([]);
@@ -104,9 +104,9 @@ export function NavsTabs({
       </div>
     </NavsTabsContext.Provider>
   );
-}
+};
 
-export function NavsTabsList({ label = 'Tabs', children, className = '', ...props }: NavsTabsListProps) {
+export const NavsTabsList = ({ label = 'Tabs', children, className = '', ...props }: NavsTabsListProps) => {
   const { orientation, variant, keys, activeKey, setActiveKey } = useNavsTabs();
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -157,9 +157,9 @@ export function NavsTabsList({ label = 'Tabs', children, className = '', ...prop
       {children}
     </div>
   );
-}
+};
 
-export function NavsTabsTab({
+export const NavsTabsTab = ({
   tabKey,
   disabled = false,
   children,
@@ -167,7 +167,7 @@ export function NavsTabsTab({
   onClick,
   onFocus,
   ...props
-}: NavsTabsTabProps) {
+}: NavsTabsTabProps) => {
   const { baseId, activeKey, setActiveKey, variant, registerKey } = useNavsTabs();
   const selected = activeKey === tabKey;
   registerKey(tabKey);
@@ -200,9 +200,9 @@ export function NavsTabsTab({
       {children}
     </a>
   );
-}
+};
 
-export function NavsTabsPanel({ tabKey, children, className = '', ...props }: NavsTabsPanelProps) {
+export const NavsTabsPanel = ({ tabKey, children, className = '', ...props }: NavsTabsPanelProps) => {
   const { baseId, activeKey } = useNavsTabs();
   const selected = activeKey === tabKey;
 
@@ -219,4 +219,4 @@ export function NavsTabsPanel({ tabKey, children, className = '', ...props }: Na
       {children}
     </div>
   );
-}
+};

@@ -31,12 +31,12 @@ export interface ModalTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 export interface ModalDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {
     children?: ReactNode;
 }
-export declare function Modal({ open, defaultOpen, onOpenChange, closeOnEscape, closeOnBackdrop, children, }: ModalProps): import("react").JSX.Element;
-export declare function ModalTrigger({ children, className, type, onClick, ...props }: ModalTriggerProps): import("react").JSX.Element;
-export declare function ModalContent({ size, centered, scrollable, showCloseButton, children, className, onKeyDown, onMouseDown, 'aria-label': ariaLabel, ...props }: ModalContentProps): import("react").ReactPortal | null;
-export declare function ModalHeader({ children, className, ...props }: ModalSectionProps): import("react").JSX.Element;
-export declare function ModalTitle({ as: Heading, children, className, ...props }: ModalTitleProps): import("react").JSX.Element;
-export declare function ModalDescription({ children, className, ...props }: ModalDescriptionProps): import("react").JSX.Element;
-export declare function ModalBody({ children, className, ...props }: ModalSectionProps): import("react").JSX.Element;
-export declare function ModalFooter({ children, className, ...props }: ModalSectionProps): import("react").JSX.Element;
-export declare function ModalClose({ children, variant, className, type, onClick, ...props }: ModalCloseProps): import("react").JSX.Element;
+export declare const Modal: ({ open, defaultOpen, onOpenChange, closeOnEscape, closeOnBackdrop, children, }: ModalProps) => import("react").JSX.Element;
+export declare const ModalTrigger: ({ children, className, type, onClick, ...props }: ModalTriggerProps) => import("react").JSX.Element;
+export declare const ModalContent: ({ size, centered, scrollable, showCloseButton, children, className, onKeyDown, onMouseDown, "aria-label": ariaLabel, ...props }: ModalContentProps) => import("react").ReactPortal | null;
+export declare const ModalHeader: ({ children, className, ...props }: ModalSectionProps) => import("react").JSX.Element;
+export declare const ModalTitle: ({ as: Heading, children, className, ...props }: ModalTitleProps) => import("react").JSX.Element;
+export declare const ModalDescription: ({ children, className, ...props }: ModalDescriptionProps) => import("react").JSX.Element;
+export declare const ModalBody: ({ children, className, ...props }: ModalSectionProps) => import("react").JSX.Element;
+export declare const ModalFooter: ({ children, className, ...props }: ModalSectionProps) => import("react").JSX.Element;
+export declare const ModalClose: ({ children, variant, className, type, onClick, ...props }: ModalCloseProps) => import("react").JSX.Element;

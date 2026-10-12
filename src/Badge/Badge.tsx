@@ -13,7 +13,7 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   children?: ReactNode;
 }
 
-export function Badge({
+export const Badge = ({
   variant = 'secondary',
   pill = false,
   position,
@@ -22,7 +22,7 @@ export function Badge({
   children,
   'aria-label': ariaLabel,
   ...props
-}: BadgeProps) {
+}: BadgeProps) => {
   const classes = [
     styles.badge,
     styles[variant],
@@ -39,4 +39,4 @@ export function Badge({
       {!dot && children}
     </span>
   );
-}
+};

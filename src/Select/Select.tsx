@@ -14,7 +14,7 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function Select({
+export const Select = ({
   size = 'medium',
   nativeSize,
   multiple = false,
@@ -22,7 +22,7 @@ export function Select({
   className = '',
   children,
   ...props
-}: SelectProps) {
+}: SelectProps) => {
   return (
     <select
       {...props}
@@ -40,4 +40,4 @@ export function Select({
       {children}
     </select>
   );
-}
+};

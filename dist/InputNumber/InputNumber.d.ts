@@ -10,4 +10,4 @@ export interface InputNumberProps extends Omit<InputHTMLAttributes<HTMLInputElem
     size?: InputNumberSize;
     wrapperClassName?: string;
 }
-export declare function InputNumber({ value, defaultValue, onValueChange, prefix, suffix, clearable, size, disabled, readOnly, className, wrapperClassName, min, max, step, onBlur, onKeyDown, ...props }: InputNumberProps): import("react").JSX.Element;
+export declare const InputNumber: ({ value, defaultValue, onValueChange, prefix, suffix, clearable, size, disabled, readOnly, className, wrapperClassName, min, max, step, onBlur, onKeyDown, ...props }: InputNumberProps) => import("react").JSX.Element;

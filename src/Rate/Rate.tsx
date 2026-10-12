@@ -23,7 +23,7 @@ function joinClasses(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function Rate({
+export const Rate = ({
   value,
   defaultValue = 0,
   onChange,
@@ -37,7 +37,7 @@ export function Rate({
   label = 'Rating',
   className = '',
   ...props
-}: RateProps) {
+}: RateProps) => {
   const [internalValue, setInternalValue] = useState(defaultValue);
   const [hoverValue, setHoverValue] = useState(0);
   const controlled = value !== undefined;
@@ -120,9 +120,9 @@ export function Rate({
       })}
     </div>
   );
-}
+};
 
-function RatingIcon({ type }: { type: RateIcon }) {
+const RatingIcon = ({ type }: { type: RateIcon }) => {
   if (type === 'face') {
     return (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -141,4 +141,4 @@ function RatingIcon({ type }: { type: RateIcon }) {
       />
     </svg>
   );
-}
+};
