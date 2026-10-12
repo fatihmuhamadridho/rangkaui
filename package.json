@@ -15,11 +15,6 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
-    "./*": {
-      "types": "./dist/*/index.d.ts",
-      "import": "./dist/*/index.mjs",
-      "require": "./dist/*/index.cjs"
-    },
     "./style.css": "./dist/index.css"
   },
   "scripts": {
