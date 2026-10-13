@@ -2,8 +2,8 @@
   "name": "rangkaui",
   "version": "0.0.4",
   "description": "",
-  "main": "./dist/core/cjs/index.cjs",
-  "module": "./dist/core/esm/index.mjs",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
   "types": "./dist/lib/index.d.ts",
   "style": "./dist/styles.css",
   "files": [
@@ -12,8 +12,8 @@
   "exports": {
     ".": {
       "types": "./dist/lib/index.d.ts",
-      "import": "./dist/core/esm/index.mjs",
-      "require": "./dist/core/cjs/index.cjs"
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
     },
     "./style.css": "./dist/styles.css"
   },

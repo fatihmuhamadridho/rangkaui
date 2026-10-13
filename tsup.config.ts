@@ -32,7 +32,7 @@ export default defineConfig([
   {
     ...shared,
     format: ['cjs'],
-    outDir: 'dist/core/cjs',
+    outDir: 'dist/cjs',
     outExtension() {
       return { js: '.cjs' };
     },
@@ -40,7 +40,7 @@ export default defineConfig([
   {
     ...shared,
     format: ['esm'],
-    outDir: 'dist/core/esm',
+    outDir: 'dist/esm',
     outExtension() {
       return { js: '.mjs' };
     },
